@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Producer & AIGC Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #ffd700; /* 类似场记板的黄色点缀 */
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .hero {
+            margin-bottom: 150px;
+            animation: fadeIn 2s ease-in;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: #888; max-width: 600px; }
+
+        /* 时间轴样式 */
+        .timeline {
+            border-left: 1px solid #333;
+            padding-left: 30px;
+            margin-left: 10px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -35.5px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        .year { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-color); font-size: 1.5rem; }
+        .project-title { font-size: 1.2rem; font-weight: bold; margin: 5px 0; }
+        .description { font-size: 0.95rem; color: #aaa; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 简单的响应式 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Making Every <br>Frame Count.</h1>
+            <p>我是 [你的名字]，一名穿梭于创意策划与项目管理之间的影视工作者。我致力于用技术（AIGC）提升叙事效率，用专业（NYU Marketing）驱动品牌价值。</p>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 50px; letter-spacing: 2px;">PRODUCTION SLATE / 历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">2025</div>
+                    <div class="project-title">FIRST International Film Festival</div>
+                    <div class="description">负责手机电影计划（Mobile Film Project）的全流程统筹，协调高校课程及品牌联动。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2024</div>
+                    <div class="project-title">蟠桃计划 (Peaches Project)</div>
+                    <div class="description">深耕影视IP与创意营销，负责项目进度管控与内容落地。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2023</div>
+                    <div class="project-title">小苔藓工作室 (Moss Studio)</div>
+                    <div class="description">参与多项影视策划案编写，探索视觉叙事的新可能。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2022</div>
+                    <div class="project-title">文案策划与战略</div>
+                    <div class="description">专注于高品质文案输出与品牌故事线构建。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2021</div>
+                    <div class="project-title">全国漫画大赛</div>
+                    <div class="description">初探视觉艺术，获得专业奖项认可。</div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 150px; text-align: center;">
+            <p style="color: #666;">[ 剧本片段与策划案正在加载中... ]</p>
+            <p>希望能与贵工作室共同开启下一个镜头。</p>
+            <a href="mailto:你的邮箱" style="color: var(--accent-color); text-decoration: none; border-bottom: 1px solid;">Get in touch -></a>
+        </section>
+    </div>
+
+</body>
+</html>
