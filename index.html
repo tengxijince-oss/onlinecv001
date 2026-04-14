@@ -1,189 +1,425 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELARA VANCE | Producer & AIGC Architect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0d0d0d;
-            --text-color: #e6e6e6;
-            --accent-color: #ff3333;
-            --grid-color: rgba(255, 255, 255, 0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XIJIN TENG — Film Enthusiast </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink:      #0d1a14;
+  --deep:     #111f18;
+  --surface:  #172418;
+  --surface2: #1e2e22;
+  --border:   #2a3d2e;
+  --mid:      #3d5542;
+  --sage:     #6b8c6e;
+  --mist:     #9fb8a0;
+  --pale:     #ccdece;
+  --cream:    #e8f0e4;
+  --white:    #f4f8f2;
+  --gold:     #c9a96e;
+  --gold-dim: rgba(201,169,110,0.12);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px; opacity: 0.4;
+  pointer-events: none; z-index: 999; mix-blend-mode: soft-light;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            font-weight: 200;
-            margin: 0;
-            line-height: 1.6;
-            letter-spacing: 0.5px;
-            overflow-x: hidden;
-        }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 4rem;
+  background: rgba(13,26,20,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--pale); letter-spacing: 0.04em; }
+.nav-links { display: flex; gap: 2.8rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.25s; }
+.nav-links a:hover { color: var(--pale); }
 
-        /* ✨ Pro 级升级：纯代码胶片噪点 ✨ */
-        body::after {
-            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 9999;
-        }
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: grid; grid-template-rows: 1fr auto;
+  padding: 0 4rem 5rem;
+  position: relative; overflow: hidden;
+  background: var(--ink);
+}
+.hero-deco {
+  position: absolute; right: -0.05em; top: 50%; transform: translateY(-52%);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22rem, 38vw, 42rem);
+  font-weight: 700; font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 0.5px var(--border);
+  line-height: 1; pointer-events: none; user-select: none; z-index: 0;
+}
+.hero-body {
+  align-self: center; padding-top: 9rem;
+  position: relative; z-index: 1; max-width: 700px;
+}
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; margin: 0; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s; }
-        a:hover { color: var(--accent-color); }
+/* ✨ 新增：拼贴照片样式 ✨ */
+.hero-collage {
+  width: 100%;
+  max-width: 480px; 
+  height: auto;
+  margin-bottom: 3rem;
+  border-radius: 4px;
+  filter: brightness(0.9) contrast(1.1);
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.hero-collage:hover {
+  transform: scale(1.03) rotate(-1deg);
+}
 
-        /* 导航栏 */
-        nav {
-            position: fixed; top: 0; width: 100%; height: 60px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 40px; box-sizing: border-box;
-            background: rgba(13, 13, 13, 0.8); backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--grid-color);
-            z-index: 1000;
-        }
-        .nav-logo { font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; }
-        .nav-links { display: flex; gap: 30px; font-size: 0.8rem; text-transform: uppercase; }
+.hero-label {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.8rem, 9.5vw, 8rem);
+  line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 0.1em;
+}
+.hero-name-i {
+  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: 1;
+  color: var(--pale); margin-bottom: 2.2rem; display: block;
+}
+.hero-desc {
+  font-size: 1rem; font-weight: 300; font-style: italic;
+  color: var(--sage); max-width: 400px; line-height: 1.85;
+  margin-bottom: 3rem; padding-left: 1.2rem;
+  border-left: 1px solid var(--border);
+}
+.hero-bottom {
+  position: relative; z-index: 1;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding-top: 2rem; border-top: 0.5px solid var(--border);
+}
+.hero-stats { display: flex; gap: 4rem; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; color: var(--pale); line-height: 1; }
+.stat-l { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-top: 0.3rem; }
+.hero-cta {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--cream); text-decoration: none; border: 0.5px solid var(--mid);
+  padding: 0.9rem 2.2rem; transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 0.8rem;
+}
+.hero-cta:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* 巨幅电影感 Hero */
-        .hero {
-            position: relative; width: 100%; height: 90vh;
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden; border-bottom: 1px solid var(--grid-color);
-        }
-        
-        /* ✨ Pro 级升级：星光大图的缓慢推镜头 ✨ */
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; filter: brightness(0.65) contrast(1.1);
-            animation: dollyIn 20s ease-in-out infinite alternate;
-            z-index: -1;
-        }
-        @keyframes dollyIn { from { transform: scale(1); } to { transform: scale(1.08); } }
+/* SECTIONS */
+.section-wrap { padding: 8rem 4rem; max-width: 1120px; margin: 0 auto; }
+.section-eyebrow { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1rem; }
+.section-num { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.section-rule-short { width: 24px; height: 0.5px; background: var(--gold); }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 400; line-height: 1.05; color: var(--white); margin-bottom: 4.5rem; }
+.section-title em { font-style: italic; color: var(--mist); }
 
-        .hero-title { text-align: center; animation: fadeIn 3s ease-out; }
-        .hero-title h1 { font-size: 5.5rem; letter-spacing: -2px; line-height: 1.1; margin-top: 10px; }
-        .hero-title p { font-size: 1rem; color: #aaa; text-transform: uppercase; letter-spacing: 4px; }
+/* ABOUT */
+#about { background: var(--deep); border-top: 0.5px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 7rem; align-items: start; }
+.about-pull {
+  font-family: 'Playfair Display', serif; font-size: 1.55rem;
+  font-style: italic; color: var(--pale); line-height: 1.55;
+  margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border);
+}
+.about-text { font-size: 0.93rem; font-weight: 300; color: var(--sage); line-height: 1.95; }
+.about-text p + p { margin-top: 1.1rem; }
+.aside-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.edu-item { padding: 1.3rem 0; border-bottom: 0.5px solid var(--border); }
+.edu-item:first-of-type { border-top: 0.5px solid var(--border); }
+.edu-school { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.2rem; }
+.edu-deg { font-size: 0.8rem; font-style: italic; color: var(--sage); }
+.edu-yr { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; color: var(--mid); margin-top: 0.25rem; }
+.skills-wrap { margin-top: 2.8rem; }
+.skills-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skill { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; color: var(--sage); border: 0.5px solid var(--border); padding: 0.28rem 0.85rem; transition: all 0.22s; }
+.skill:hover { color: var(--pale); border-color: var(--sage); }
 
-        /* 网格板块 */
-        .content-section { display: grid; grid-template-columns: 1fr 2fr; border-bottom: 1px solid var(--grid-color); }
-        .section-header { padding: 80px 40px; border-right: 1px solid var(--grid-color); }
-        .section-header h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; color: #fff; }
-        .section-body { padding: 80px 60px; }
+/* TIMELINE */
+#work { background: var(--ink); }
+.timeline { position: relative; }
+.tl-line { position: absolute; left: 110px; top: 0; bottom: 0; width: 0.5px; background: linear-gradient(180deg, var(--border), var(--border) 85%, transparent); }
+.tl-list { padding-left: 156px; }
+.tl-item { position: relative; border-bottom: 0.5px solid var(--border); cursor: pointer; }
+.tl-item:first-child { border-top: 0.5px solid var(--border); }
+.tl-anchor { position: absolute; left: -155px; top: 1.9rem; width: 110px; text-align: right; padding-right: 1.6rem; }
+.tl-year { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--mid); line-height: 1.3; transition: color 0.25s; }
+.tl-dot { position: absolute; left: -48px; top: 2.15rem; width: 8px; height: 8px; border-radius: 50%; border: 0.5px solid var(--mid); background: var(--ink); transition: all 0.25s; transform: translateX(-50%); }
+.tl-item.open .tl-dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-dim); }
+.tl-item.open .tl-year { color: var(--gold); }
+.tl-header { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.9rem 0; }
+.tl-company { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--cream); margin-bottom: 0.2rem; }
+.tl-role { font-size: 0.8rem; font-style: italic; color: var(--sage); }
+.tl-plus { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--mid); transition: transform 0.3s, color 0.25s; flex-shrink: 0; }
+.tl-item.open .tl-plus { transform: rotate(45deg); color: var(--gold); }
+.tl-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+.tl-item.open .tl-body { max-height: 480px; }
+.tl-body-inner { padding: 0 0 2.5rem; display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+.tl-desc { font-size: 0.9rem; font-weight: 300; color: var(--sage); line-height: 1.95; }
+.tl-desc p + p { margin-top: 0.8rem; }
+.tl-chips { display: flex; flex-direction: column; gap: 0; }
+.tl-chip { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); padding: 0.5rem 0; border-bottom: 0.5px solid var(--border); }
 
-        /* 导演手记 */
-        .about-text { font-size: 1.15rem; max-width: 650px; color: #bbb; }
-        .about-text strong { color: white; font-weight: 400; }
+/* CONTACT */
+#contact { background: var(--surface); border-top: 0.5px solid var(--border); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+.contact-big { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400; line-height: 1.05; color: var(--white); margin-bottom: 1.8rem; }
+.contact-big em { font-style: italic; color: var(--mist); }
+.contact-note { font-size: 0.9rem; font-weight: 300; font-style: italic; color: var(--sage); line-height: 1.85; padding-left: 1.2rem; border-left: 1px solid var(--border); margin-bottom: 3.5rem; }
+.email-row { display: flex; align-items: center; gap: 1.2rem; cursor: pointer; margin-bottom: 0.6rem; }
+.email-dash { width: 24px; height: 0.5px; background: var(--gold); transition: width 0.3s; }
+.email-row:hover .email-dash { width: 40px; }
+.email-addr { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--cream); transition: color 0.25s; }
+.email-row:hover .email-addr { color: var(--gold); }
+.copy-note { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-left: calc(24px + 1.2rem); transition: color 0.3s; height: 1.2rem; }
+.social-list { display: flex; flex-direction: column; margin-top: 3.5rem; border-top: 0.5px solid var(--border); }
+.social-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 0.5px solid var(--border); text-decoration: none; color: var(--sage); font-size: 0.82rem; transition: color 0.22s; cursor: pointer; }
+.social-item:hover { color: var(--pale); }
+.social-arr { font-size: 0.8rem; opacity: 0; transform: translateX(-4px); transition: all 0.2s; }
+.social-item:hover .social-arr { opacity: 1; transform: none; }
+.manifesto { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--mist); line-height: 1.75; border-left: 1px solid var(--border); padding-left: 2rem; margin-bottom: 3rem; }
+.manifesto-attr { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-top: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+.manifesto-attr::before { content: ''; display: block; width: 16px; height: 0.5px; background: var(--mid); }
 
-        /* 历程网格 */
-        .timeline-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; }
-        .timeline-year { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-color); font-size: 1.8rem; margin-bottom: 5px; }
-        .timeline-title { font-size: 1.2rem; font-weight: 400; color: #fff; border-bottom: 1px solid var(--grid-color); padding-bottom: 15px; margin-bottom: 15px; }
-        .timeline-desc { font-size: 0.9rem; color: #999; }
+/* FOOTER */
+footer { background: var(--ink); border-top: 0.5px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-name { font-family: 'DM Serif Display', serif; font-size: 0.9rem; color: var(--mid); letter-spacing: 0.06em; text-transform: uppercase;}
+.footer-copy { font-size: 0.62rem; letter-spacing: 0.12em; color: var(--border); }
 
-        footer { padding: 80px 40px; text-align: center; font-size: 0.8rem; }
-        footer a { color: var(--accent-color); font-size: 1.5rem; text-decoration: underline; font-family: 'Playfair Display', serif; font-style: italic; }
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal.visible { opacity: 1; transform: none; }
 
-        /* ✨ Pro 级升级：滚动渐显类名 ✨ */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        @media (max-width: 768px) {
-            .content-section { grid-template-columns: 1fr; }
-            .section-header { border-right: none; border-bottom: 1px solid var(--grid-color); padding: 40px 20px; }
-            .section-body { padding: 40px 20px; }
-            .timeline-grid { grid-template-columns: 1fr; }
-            .hero-title h1 { font-size: 3.5rem; }
-        }
-    </style>
+@media (max-width: 800px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { gap: 1.6rem; }
+  #hero { padding: 0 1.5rem 4rem; }
+  .hero-deco { display: none; }
+  .hero-stats { gap: 2rem; }
+  .hero-cta { display: none; }
+  .section-wrap { padding: 5rem 1.5rem; }
+  .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 3.5rem; }
+  .tl-line { display: none; }
+  .tl-list { padding-left: 0; }
+  .tl-anchor, .tl-dot { display: none; }
+  .tl-body-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  footer { flex-direction: column; gap: 0.6rem; }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">ELARA VANCE</div>
-        <div class="nav-links">
-            <a href="#about">Note</a>
-            <a href="#slate">Slate</a>
+<nav>
+  <div class="nav-logo">[XIJIN TENG]</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Slate</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-deco">P</div>
+  <div class="hero-body reveal">
+    <img src="collage.jpg" alt="Personal Collage" class="hero-collage">
+    
+    <div class="hero-label">影视制片 PM · AIGC 探索者</div>
+    <h1 class="hero-name">[XIJIN]</h1>
+    <span class="hero-name-i">[TENG]</span>
+    <p class="hero-desc">扎根上海的青年创作者。<br>在理性的项目统筹与感性的影像叙事间寻找平衡。</p>
+  </div>
+  <div class="hero-bottom reveal">
+    <div class="hero-stats">
+      <div><div class="stat-n">2028</div><div class="stat-l">长片计划</div></div>
+      <div><div class="stat-n">NYU</div><div class="stat-l">整合营销背景</div></div>
+    </div>
+    <a href="#contact" class="hero-cta">开启合作 →</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-eyebrow reveal"><span class="section-num">01</span><div class="section-rule-short"></div></div>
+    <h2 class="section-title reveal">Director's <em>Note</em></h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-pull">「我相信好的项目管理本身就是一种创作，让混乱变成秩序，让想象落地为影像。」</p>
+        <div class="about-text">
+          <p>我致力于探索视觉叙事的新边界。拥有纽约大学 (NYU) 整合营销硕士学位，这让我能用更体系化的商业思维去拆解影视 IP 的孵化与落地。</p>
+          <p>从科幻短片的剧本开发，到大型影展的统筹流转，我擅长利用 AIGC 工具优化工作流，确保创意在有限的周期与预算内得到最高质量的呈现。</p>
         </div>
-    </nav>
-
-    <section class="hero">
-        <img src="hero.jpg" class="hero-bg" alt="Cinematic Starlight">
-        <div class="hero-title">
-            <p>Producer /// AIGC Explorer</p>
-            <h1>DIRECTING<br>THE FUTURE.</h1>
+      </div>
+      <div class="reveal">
+        <div class="aside-label">Education</div>
+        <div class="edu-item"><div class="edu-school">New York University (NYU)</div><div class="edu-deg">整合营销 · 硕士 (Master)</div><div class="edu-yr">Graduated</div></div>
+        <div class="skills-wrap">
+          <div class="aside-label" style="margin-top:1.5rem">Core Focus</div>
+          <div class="skills-cloud">
+            <span class="skill">项目统筹 (PM)</span><span class="skill">AIGC 视觉辅助</span><span class="skill">剧本开发</span>
+            <span class="skill">跨部门协作</span><span class="skill">品牌扩张营销</span><span class="skill">排期与预算</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="content-section">
-        <div class="section-header">
-            <h2 class="reveal">DIRECTOR'S NOTE<br>导演手记</h2>
-        </div>
-        <div class="section-body reveal">
-            <p class="about-text">
-                一名扎根于上海的制片人与创作者。融合**纽约大学 (NYU)** 的整合营销视野与 AIGC 前沿技术，在理性的项目统筹与感性的科幻叙事间寻找平衡。致力于探索视觉叙事的新边界，并计划于 2028 年完成首部个人长片剧本。
-            </p>
-        </div>
-    </section>
+<section id="work">
+  <div class="section-wrap">
+    <div class="section-eyebrow reveal"><span class="section-num">02</span><div class="section-rule-short"></div></div>
+    <h2 class="section-title reveal">Production <em>Slate</em></h2>
+    <div class="timeline reveal">
+      <div class="tl-line"></div>
+      <div class="tl-list">
 
-    <section id="slate" class="content-section">
-        <div class="section-header">
-            <h2 class="reveal">PRODUCTION SLATE<br>场记板</h2>
-        </div>
-        <div class="section-body">
-            <div class="timeline-grid">
-                
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">2026</div>
-                    <div class="timeline-title">Sci-Fi Short Project</div>
-                    <div class="timeline-desc">独立开发太空题材科幻短片，探索极具实验性的 POV 监视器视觉美学。</div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-title">FIRST Intl. Film Festival</div>
-                    <div class="timeline-desc">MOBILE FILM PROJECT (手机电影计划) 全流程统筹，协调顶尖高校课程及品牌联动。</div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-title">蟠桃计划 (Peaches)</div>
-                    <div class="timeline-desc">品牌扩张中心项目管理。独立完成中剧大纲，负责项目进度管控与核心提案 PPT 制作。</div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">2023</div>
-                    <div class="timeline-title">小苔藓编剧训练营</div>
-                    <div class="timeline-desc">参与剧本大纲深度研讨，成功将科幻小说《傻子》改编为电影大纲。</div>
-                </div>
+        <div class="tl-item" onclick="toggleTl(this)">
+          <div class="tl-anchor"><div class="tl-year">2026</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div><div class="tl-company">个人科幻短片项目</div><div class="tl-role">开发阶段</div></div>
+            <div class="tl-plus">+</div>
+          </div>
+          <div class="tl-body"><div class="tl-body-inner">
+            <div class="tl-desc">
+              <p>独立开发太空题材科幻短片，探索极具实验性的视觉美学与叙事节奏。</p>
             </div>
+            <div class="tl-chips"><span class="tl-chip">剧本开发</span><span class="tl-chip">视觉预演</span></div>
+          </div></div>
         </div>
-    </section>
 
-    <footer>
-        <p class="reveal">期待与贵工作室共同开启下一个镜头。</p><br>
-        <a href="mailto:你的邮箱@example.com" class="reveal">GET IN TOUCH -></a>
-        <p style="color: #444; margin-top: 60px;">© 2026 ELARA VANCE. All rights reserved.</p>
-    </footer>
+        <div class="tl-item open" onclick="toggleTl(this)">
+          <div class="tl-anchor"><div class="tl-year">2025</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div><div class="tl-company">FIRST 青年电影展</div><div class="tl-role">全流程统筹</div></div>
+            <div class="tl-plus">+</div>
+          </div>
+          <div class="tl-body"><div class="tl-body-inner">
+            <div class="tl-desc">
+              <p>负责“手机电影计划 (Mobile Film Project)”的全流程统筹与落地执行。</p>
+              <p>高效协调顶尖高校（如北京大学、中国传媒大学）课程安排及品牌资源联动，确保核心物料与排期的精准对接。</p>
+            </div>
+            <div class="tl-chips"><span class="tl-chip">项目流转</span><span class="tl-chip">跨界沟通</span><span class="tl-chip">资源调度</span></div>
+          </div></div>
+        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.15 });
+        <div class="tl-item" onclick="toggleTl(this)">
+          <div class="tl-anchor"><div class="tl-year">2024</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div><div class="tl-company">蟠桃计划 (Peaches)</div><div class="tl-role">品牌扩张中心项目管理</div></div>
+            <div class="tl-plus">+</div>
+          </div>
+          <div class="tl-body"><div class="tl-body-inner">
+            <div class="tl-desc">
+              <p>深耕影视 IP 与创意营销，负责项目整体进度管控。独立完成中剧大纲，并输出核心提案 PPT 驱动项目落地。</p>
+            </div>
+            <div class="tl-chips"><span class="tl-chip">IP 孵化</span><span class="tl-chip">进度管控</span></div>
+          </div></div>
+        </div>
 
-            document.querySelectorAll('.reveal').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-    </script>
+        <div class="tl-item" onclick="toggleTl(this)">
+          <div class="tl-anchor"><div class="tl-year">2023</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div><div class="tl-company">小苔藓编剧训练营</div><div class="tl-role">剧本策划</div></div>
+            <div class="tl-plus">+</div>
+          </div>
+          <div class="tl-body"><div class="tl-body-inner">
+            <div class="tl-desc">
+              <p>深度参与剧本大纲研讨，成功将科幻小说《傻子》改编为电影大纲。</p>
+            </div>
+            <div class="tl-chips"><span class="tl-chip">文本改编</span><span class="tl-chip">创意策划</span></div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-eyebrow reveal"><span class="section-num">03</span><div class="section-rule-short"></div></div>
+    <h2 class="section-title reveal">Let's <em>Connect</em></h2>
+    <div class="contact-layout">
+      <div class="reveal">
+        <h3 class="contact-big">期待下一个<br><em>镜头。</em></h3>
+        <p class="contact-note">如果您正在寻找一位兼具营销视野与执行力的制片 PM，<br>欢迎随时与我联系。</p>
+        
+        <div class="email-row" onclick="copyEmail()">
+          <div class="email-dash"></div>
+          <span class="email-addr" id="myEmail">你的真实邮箱@example.com</span>
+        </div>
+        <div class="copy-note" id="copyNote">点击复制邮箱</div>
+        
+      </div>
+      <div class="reveal">
+        <div class="manifesto">
+          「把天马行空的灵感，装进精密运转的齿轮里。」
+          <div class="manifesto-attr">[你的名字大写] · PRODUCER</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">[你的名字大写]</div>
+  <div class="footer-copy">© 2026 · Film Producer · AIGC Explorer</div>
+</footer>
+
+<script>
+// 极简的时间轴点击交互
+function toggleTl(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+// 优雅的邮箱复制功能
+function copyEmail() {
+  const emailText = document.getElementById('myEmail').innerText;
+  navigator.clipboard.writeText(emailText).catch(()=>{});
+  const n = document.getElementById('copyNote');
+  n.textContent = '已复制 ✓'; n.style.color = 'var(--gold)';
+  setTimeout(() => { n.textContent = '点击复制邮箱'; n.style.color = ''; }, 2000);
+}
+
+// 页面滚动时的镜头渐显效果
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
