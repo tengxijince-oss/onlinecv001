@@ -62,35 +62,10 @@ nav {
   position: relative; overflow: hidden;
   background: var(--ink);
 }
-.hero-deco {
-  position: absolute; right: -0.05em; top: 50%; transform: translateY(-52%);
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22rem, 38vw, 42rem);
-  font-weight: 700; font-style: italic;
-  color: transparent;
-  -webkit-text-stroke: 0.5px var(--border);
-  line-height: 1; pointer-events: none; user-select: none; z-index: 0;
-}
 .hero-body {
   align-self: center; padding-top: 9rem;
   position: relative; z-index: 1; max-width: 700px;
 }
-
-/* ✨ 新增：拼贴照片样式 ✨ */
-.hero-collage {
-  width: 100%;
-  max-width: 480px; 
-  height: auto;
-  margin-bottom: 3rem;
-  border-radius: 4px;
-  filter: brightness(0.9) contrast(1.1);
-  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-.hero-collage:hover {
-  transform: scale(1.03) rotate(-1deg);
-}
-
 .hero-label {
   display: flex; align-items: center; gap: 1rem;
   font-size: 0.68rem; font-weight: 500;
@@ -218,7 +193,6 @@ footer { background: var(--ink); border-top: 0.5px solid var(--border); padding:
   nav { padding: 1.2rem 1.5rem; }
   .nav-links { gap: 1.6rem; }
   #hero { padding: 0 1.5rem 4rem; }
-  .hero-deco { display: none; }
   .hero-stats { gap: 2rem; }
   .hero-cta { display: none; }
   .section-wrap { padding: 5rem 1.5rem; }
@@ -243,14 +217,12 @@ footer { background: var(--ink); border-top: 0.5px solid var(--border); padding:
 </nav>
 
 <section id="hero">
-  <div class="hero-deco">P</div>
   <div class="hero-body reveal">
-    <img src="collage.jpg" alt="Personal Collage" class="hero-collage">
-    
     <div class="hero-label"> · AIGC 探索中</div>
     <h1 class="hero-name">[XIJIN]</h1>
     <span class="hero-name-i">[TENG]</span>
     <p class="hero-desc">靠谱的INTJ<br>在理性的项目统筹与感性的影像叙事间寻找平衡。</p>
+  </div>
 </section>
 
 <section id="about">
@@ -345,73 +317,4 @@ footer { background: var(--ink); border-top: 0.5px solid var(--border); padding:
             <div class="tl-desc">
               <p>深度参与剧本大纲研讨，成功将科幻小说《傻子》改编为电影大纲。</p>
             </div>
-            <div class="tl-chips"><span class="tl-chip">文本改编</span><span class="tl-chip">创意策划</span></div>
-          </div></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-wrap">
-    <div class="section-eyebrow reveal"><span class="section-num">03</span><div class="section-rule-short"></div></div>
-    <h2 class="section-title reveal">Let's <em>Connect</em></h2>
-    <div class="contact-layout">
-      <div class="reveal">
-        <h3 class="contact-big">期待下一个<br><em>镜头。</em></h3>
-        <p class="contact-note">如果您正在寻找一位兼具营销视野与执行力的制片 PM，<br>欢迎随时与我联系。</p>
-        
-        <div class="email-row" onclick="copyEmail()">
-          <div class="email-dash"></div>
-          <span class="email-addr" id="myEmail">你的真实邮箱@example.com</span>
-        </div>
-        <div class="copy-note" id="copyNote">点击复制邮箱</div>
-        
-      </div>
-      <div class="reveal">
-        <div class="manifesto">
-          「把天马行空的灵感，装进精密运转的齿轮里。」
-          <div class="manifesto-attr">[你的名字大写] · PRODUCER</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-name">[你的名字大写]</div>
-  <div class="footer-copy">© 2026 · Film Producer · AIGC Explorer</div>
-</footer>
-
-<script>
-// 极简的时间轴点击交互
-function toggleTl(el) {
-  const isOpen = el.classList.contains('open');
-  document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) el.classList.add('open');
-}
-
-// 优雅的邮箱复制功能
-function copyEmail() {
-  const emailText = document.getElementById('myEmail').innerText;
-  navigator.clipboard.writeText(emailText).catch(()=>{});
-  const n = document.getElementById('copyNote');
-  n.textContent = '已复制 ✓'; n.style.color = 'var(--gold)';
-  setTimeout(() => { n.textContent = '点击复制邮箱'; n.style.color = ''; }, 2000);
-}
-
-// 页面滚动时的镜头渐显效果
-const io = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+            <div class="tl-chips"><span class="tl-chip">文本改编</span><span class="
