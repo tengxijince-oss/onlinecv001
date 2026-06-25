@@ -81,7 +81,7 @@
     <!-- 视频背景层：已清理冲突代码，开启自动循环播放 -->
     <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
         <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
-        <video id="hero-video" autoplay loop muted playsinline class="z-0">
+     <video id="hero-video" muted playsinline preload="auto" class="z-0">
             <source src="bg.mp4" type="video/mp4" />
         </video>
     </div>
@@ -192,9 +192,7 @@
         </footer>
 
     </div>
-
-    <script>
-        // 1. 视频加载逻辑（已移除冲突的滚动侦听）
+   // 1. 视频加载与滚动驱动逻辑
         const VIDEO_URL = 'bg.mp4'; 
         const video = document.getElementById('hero-video');
         let isLoaded = false;
@@ -210,7 +208,15 @@
             video.addEventListener('canplay', handleLoaded);
             video.addEventListener('canplaythrough', handleLoaded);
             video.load();
-            setTimeout(handleLoaded, 3000); 
+            setTimeout(handleLoaded, 3000); // 3秒兜底解锁
+            
+            // 就是下面这段让视频跟着滚动走的魔法代码
+            window.addEventListener('scroll', () => {
+                if (!isLoaded || !video || !video.duration || video.seeking) return;
+                const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                const scrollFraction = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+                video.currentTime = scrollFraction * video.duration;
+            }, { passive: true });
         }
 
         // 2. GSAP 文字逐词浮现
