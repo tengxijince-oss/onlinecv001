@@ -1,320 +1,287 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XIJIN TENG — Film Enthusiast </title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --ink:      #0d1a14;
-  --deep:     #111f18;
-  --surface:  #172418;
-  --surface2: #1e2e22;
-  --border:   #2a3d2e;
-  --mid:      #3d5542;
-  --sage:     #6b8c6e;
-  --mist:     #9fb8a0;
-  --pale:     #ccdece;
-  --cream:    #e8f0e4;
-  --white:    #f4f8f2;
-  --gold:     #c9a96e;
-  --gold-dim: rgba(201,169,110,0.12);
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--ink);
-  color: var(--cream);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  background-size: 200px; opacity: 0.4;
-  pointer-events: none; z-index: 999; mix-blend-mode: soft-light;
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xijin Teng | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- cinematic-editorial 字体 -->
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { 
+                extend: {
+                    fontFamily: {
+                        // 启用 cinematic-editorial
+                        sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0A0A0A',
+                    }
+                } 
+            },
+        };
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js"></script>
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.5rem 4rem;
-  background: rgba(13,26,20,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 0.5px solid var(--border);
-}
-.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--pale); letter-spacing: 0.04em; }
-.nav-links { display: flex; gap: 2.8rem; list-style: none; }
-.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.25s; }
-.nav-links a:hover { color: var(--pale); }
+    <style>
+        /* Loading 屏逻辑 */
+        body [data-loaded="true"] #loading {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #loading {
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
 
-/* HERO */
-#hero {
-  min-height: 100vh;
-  display: grid; grid-template-rows: 1fr auto;
-  padding: 0 4rem 5rem;
-  position: relative; overflow: hidden;
-  background: var(--ink);
-}
-.hero-body {
-  align-self: center; padding-top: 9rem;
-  position: relative; z-index: 1; max-width: 700px;
-}
-.hero-label {
-  display: flex; align-items: center; gap: 1rem;
-  font-size: 0.68rem; font-weight: 500;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 2rem;
-}
-.hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
-.hero-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(3.8rem, 9.5vw, 8rem);
-  line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 0.1em;
-}
-.hero-name-i {
-  font-family: 'DM Serif Display', serif; font-style: italic;
-  font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: 1;
-  color: var(--pale); margin-bottom: 2.2rem; display: block;
-}
-.hero-desc {
-  font-size: 1rem; font-weight: 300; font-style: italic;
-  color: var(--sage); max-width: 400px; line-height: 1.85;
-  margin-bottom: 3rem; padding-left: 1.2rem;
-  border-left: 1px solid var(--border);
-}
-.hero-bottom {
-  position: relative; z-index: 1;
-  display: flex; align-items: flex-end; justify-content: space-between;
-  padding-top: 2rem; border-top: 0.5px solid var(--border);
-}
-.hero-stats { display: flex; gap: 4rem; }
-.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; color: var(--pale); line-height: 1; }
-.stat-l { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-top: 0.3rem; }
-.hero-cta {
-  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--cream); text-decoration: none; border: 0.5px solid var(--mid);
-  padding: 0.9rem 2.2rem; transition: all 0.3s;
-  display: inline-flex; align-items: center; gap: 0.8rem;
-}
-.hero-cta:hover { border-color: var(--gold); color: var(--gold); }
+        /* 视频背景全屏铺满 */
+        #video-bg video {
+            position: absolute; 
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%; 
+            min-height: 100%;
+            object-fit: cover;
+        }
 
-/* SECTIONS */
-.section-wrap { padding: 8rem 4rem; max-width: 1120px; margin: 0 auto; }
-.section-eyebrow { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1rem; }
-.section-num { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
-.section-rule-short { width: 24px; height: 0.5px; background: var(--gold); }
-.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 400; line-height: 1.05; color: var(--white); margin-bottom: 4.5rem; }
-.section-title em { font-style: italic; color: var(--mist); }
+        /* 玻璃态质感辅助 */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-/* ABOUT */
-#about { background: var(--deep); border-top: 0.5px solid var(--border); }
-.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 7rem; align-items: start; }
-.about-pull {
-  font-family: 'Playfair Display', serif; font-size: 1.55rem;
-  font-style: italic; color: var(--pale); line-height: 1.55;
-  margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border);
-}
-.about-text { font-size: 0.93rem; font-weight: 300; color: var(--sage); line-height: 1.95; }
-.about-text p + p { margin-top: 1.1rem; }
-.aside-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-.edu-item { padding: 1.3rem 0; border-bottom: 0.5px solid var(--border); }
-.edu-item:first-of-type { border-top: 0.5px solid var(--border); }
-.edu-school { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.2rem; }
-.edu-deg { font-size: 0.8rem; font-style: italic; color: var(--sage); }
-.edu-yr { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; color: var(--mid); margin-top: 0.25rem; }
-.skills-wrap { margin-top: 2.8rem; }
-.skills-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-.skill { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; color: var(--sage); border: 0.5px solid var(--border); padding: 0.28rem 0.85rem; transition: all 0.22s; }
-.skill:hover { color: var(--pale); border-color: var(--sage); }
+        /* 滚动文字动画 CSS */
+        .scroll-reveal { margin: 0; }
+        .scroll-reveal-text { display: flex; flex-wrap: wrap; margin: 0; }
+        .word { display: inline-block; white-space: pre; }
 
-/* TIMELINE */
-#work { background: var(--ink); }
-.timeline { position: relative; }
-.tl-line { position: absolute; left: 110px; top: 0; bottom: 0; width: 0.5px; background: linear-gradient(180deg, var(--border), var(--border) 85%, transparent); }
-.tl-list { padding-left: 156px; }
-.tl-item { position: relative; border-bottom: 0.5px solid var(--border); cursor: pointer; }
-.tl-item:first-child { border-top: 0.5px solid var(--border); }
-.tl-anchor { position: absolute; left: -155px; top: 1.9rem; width: 110px; text-align: right; padding-right: 1.6rem; }
-.tl-year { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--mid); line-height: 1.3; transition: color 0.25s; }
-.tl-dot { position: absolute; left: -48px; top: 2.15rem; width: 8px; height: 8px; border-radius: 50%; border: 0.5px solid var(--mid); background: var(--ink); transition: all 0.25s; transform: translateX(-50%); }
-.tl-item.open .tl-dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-dim); }
-.tl-item.open .tl-year { color: var(--gold); }
-.tl-header { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.9rem 0; }
-.tl-company { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--cream); margin-bottom: 0.2rem; }
-.tl-role { font-size: 0.8rem; font-style: italic; color: var(--sage); }
-.tl-plus { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--mid); transition: transform 0.3s, color 0.25s; flex-shrink: 0; }
-.tl-item.open .tl-plus { transform: rotate(45deg); color: var(--gold); }
-.tl-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
-.tl-item.open .tl-body { max-height: 480px; }
-.tl-body-inner { padding: 0 0 2.5rem; display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
-.tl-desc { font-size: 0.9rem; font-weight: 300; color: var(--sage); line-height: 1.95; }
-.tl-desc p + p { margin-top: 0.8rem; }
-.tl-chips { display: flex; flex-direction: column; gap: 0; }
-.tl-chip { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); padding: 0.5rem 0; border-bottom: 0.5px solid var(--border); }
-
-/* CONTACT */
-#contact { background: var(--surface); border-top: 0.5px solid var(--border); }
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
-.contact-big { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400; line-height: 1.05; color: var(--white); margin-bottom: 1.8rem; }
-.contact-big em { font-style: italic; color: var(--mist); }
-.contact-note { font-size: 0.9rem; font-weight: 300; font-style: italic; color: var(--sage); line-height: 1.85; padding-left: 1.2rem; border-left: 1px solid var(--border); margin-bottom: 3.5rem; }
-.email-row { display: flex; align-items: center; gap: 1.2rem; cursor: pointer; margin-bottom: 0.6rem; }
-.email-dash { width: 24px; height: 0.5px; background: var(--gold); transition: width 0.3s; }
-.email-row:hover .email-dash { width: 40px; }
-.email-addr { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--cream); transition: color 0.25s; }
-.email-row:hover .email-addr { color: var(--gold); }
-.copy-note { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-left: calc(24px + 1.2rem); transition: color 0.3s; height: 1.2rem; }
-.social-list { display: flex; flex-direction: column; margin-top: 3.5rem; border-top: 0.5px solid var(--border); }
-.social-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 0.5px solid var(--border); text-decoration: none; color: var(--sage); font-size: 0.82rem; transition: color 0.22s; cursor: pointer; }
-.social-item:hover { color: var(--pale); }
-.social-arr { font-size: 0.8rem; opacity: 0; transform: translateX(-4px); transition: all 0.2s; }
-.social-item:hover .social-arr { opacity: 1; transform: none; }
-.manifesto { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--mist); line-height: 1.75; border-left: 1px solid var(--border); padding-left: 2rem; margin-bottom: 3rem; }
-.manifesto-attr { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-top: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
-.manifesto-attr::before { content: ''; display: block; width: 16px; height: 0.5px; background: var(--mid); }
-
-/* FOOTER */
-footer { background: var(--ink); border-top: 0.5px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
-.footer-name { font-family: 'DM Serif Display', serif; font-size: 0.9rem; color: var(--mid); letter-spacing: 0.06em; text-transform: uppercase;}
-.footer-copy { font-size: 0.62rem; letter-spacing: 0.12em; color: var(--border); }
-
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-
-@media (max-width: 800px) {
-  nav { padding: 1.2rem 1.5rem; }
-  .nav-links { gap: 1.6rem; }
-  #hero { padding: 0 1.5rem 4rem; }
-  .hero-stats { gap: 2rem; }
-  .hero-cta { display: none; }
-  .section-wrap { padding: 5rem 1.5rem; }
-  .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 3.5rem; }
-  .tl-line { display: none; }
-  .tl-list { padding-left: 0; }
-  .tl-anchor, .tl-dot { display: none; }
-  .tl-body-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-  footer { flex-direction: column; gap: 0.6rem; }
-}
-</style>
+        /* 视口 Reveal 动画 CSS */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: calc(var(--reveal-delay, 0) * 1s);
+        }
+        [data-reveal="visible"] { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    </style>
 </head>
-<body>
+<body class="bg-obsidian text-white/90 antialiased selection:bg-white/20">
 
-<nav>
-  <div class="nav-logo">[XIJIN TENG]</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<section id="hero">
-  <div class="hero-body reveal">
-    <div class="hero-label"> · AIGC 探索中</div>
-    <h1 class="hero-name">[XIJIN]</h1>
-    <span class="hero-name-i">[TENG]</span>
-    <p class="hero-desc">靠谱的INTJ<br>在理性的项目统筹与感性的影像叙事间寻找平衡。</p>
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-wrap">
-    <div class="section-eyebrow reveal"><span class="section-num">01</span><div class="section-rule-short"></div></div>
-    <h2 class="section-title reveal">Director's <em>Note</em></h2>
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="about-pull">「我相信好的项目管理本身就是一种创作，让混乱变成秩序，让想象落地为影像。」</p>
-        <div class="about-text">
-          <p>我致力于探索视觉叙事的新边界。拥有纽约大学 (NYU) 整合营销硕士学位，这让我能用更体系化的商业思维去拆解影视 IP 的孵化与落地。</p>
-          <p>从科幻短片的剧本开发，到大型影展的统筹流转，我擅长利用 AIGC 工具优化工作流，确保创意在有限的周期与预算内得到最高质量的呈现。</p>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="aside-label">Education</div>
-        <div class="edu-item"><div class="edu-school">New York University (NYU)</div><div class="edu-deg">整合营销 · 硕士 (Master)</div><div class="edu-yr">Graduated</div></div>
-        <div class="skills-wrap">
-          <div class="aside-label" style="margin-top:1.5rem">Core Focus</div>
-          <div class="skills-cloud">
-            <span class="skill">项目统筹 (PM)</span><span class="skill">AIGC 视觉辅助</span><span class="skill">剧本开发</span>
-            <span class="skill">跨部门协作</span><span class="skill">品牌扩张营销</span><span class="skill">排期与预算</span>
-          </div>
-        </div>
-      </div>
+    <!-- z-50 Loading 屏 -->
+    <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-obsidian text-white font-mono text-sm tracking-widest">
+        INITIALIZING SEQUENCE...
     </div>
-  </div>
-</section>
 
-<section id="work">
-  <div class="section-wrap">
-    <div class="section-eyebrow reveal"><span class="section-num">02</span><div class="section-rule-short"></div></div>
-    <h2 class="section-title reveal">Production <em>Slate</em></h2>
-    <div class="timeline reveal">
-      <div class="tl-line"></div>
-      <div class="tl-list">
+    <!-- z-0 视频背景 -->
+    <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
+        <!-- 增加一层暗黑遮罩，确保文字可读性，同时保留 cinematic 质感 -->
+        <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
+        <video id="hero-video" muted playsinline preload="auto" class="z-0">
+            <source src="网页背景.mp4" type="video/mp4" />
+        </video>
+    </div>
 
-        <div class="tl-item" onclick="toggleTl(this)">
-          <div class="tl-anchor"><div class="tl-year">2026</div></div>
-          <div class="tl-dot"></div>
-          <div class="tl-header">
-            <div><div class="tl-company">个人科幻短片项目</div><div class="tl-role">开发阶段</div></div>
-            <div class="tl-plus">+</div>
-          </div>
-          <div class="tl-body"><div class="tl-body-inner">
-            <div class="tl-desc">
-              <p>独立开发太空题材科幻短片，探索极具实验性的视觉美学与叙事节奏。</p>
+    <!-- z-10 内容层 -->
+    <div class="relative z-10 pointer-events-none">
+        
+        <!-- z-20 Header -->
+        <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
+            <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
+                Xijin (Morgan) Teng <br/>
+                <span class="text-white/50 text-xs">V.2026.06</span>
             </div>
-            <div class="tl-chips"><span class="tl-chip">剧本开发</span><span class="tl-chip">视觉预演</span></div>
-          </div></div>
-        </div>
+            <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase">
+                <a href="#" class="hover:text-white/50 transition-colors">Strategy</a>
+                <a href="#" class="hover:text-white/50 transition-colors">Film</a>
+                <a href="#" class="hover:text-white/50 transition-colors">Entropy</a>
+                <a href="#" class="hover:text-white/50 transition-colors">Index</a>
+            </nav>
+        </header>
 
-        <div class="tl-item open" onclick="toggleTl(this)">
-          <div class="tl-anchor"><div class="tl-year">2025</div></div>
-          <div class="tl-dot"></div>
-          <div class="tl-header">
-            <div><div class="tl-company">FIRST 青年电影展</div><div class="tl-role">全流程统筹</div></div>
-            <div class="tl-plus">+</div>
-          </div>
-          <div class="tl-body"><div class="tl-body-inner">
-            <div class="tl-desc">
-              <p>负责“手机电影计划 (Mobile Film Project)”的全流程统筹与落地执行。</p>
-              <p>高效协调顶尖高校（如北京大学、中国传媒大学）课程安排及品牌资源联动，确保核心物料与排期的精准对接。</p>
-            </div>
-            <div class="tl-chips"><span class="tl-chip">项目流转</span><span class="tl-chip">跨界沟通</span><span class="tl-chip">资源调度</span></div>
-          </div></div>
-        </div>
+        <main>
+            <!-- 章节 1: Hero -->
+            <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
+                <div class="max-w-5xl" data-reveal style="--reveal-delay: 0.5">
+                    <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold uppercase leading-[0.9] mb-8">
+                        Data Driven.<br/>
+                        <span class="text-white/60">Story Obsessed.</span>
+                    </h1>
+                    
+                    <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
+                        <p class="font-sans text-base md:text-lg max-w-md font-light leading-relaxed text-white/80">
+                            纽约大学整合营销硕士<span class="font-semibold text-white">游走于商业策略与独立影像之间。</span>以理性的数据分析拆解市场，用感性的创意重塑故事与记忆。
+                        </p>
+                        
+                        <a href="#about" class="pointer-events-auto group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors">
+                            Enter the World
+                            <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-        <div class="tl-item" onclick="toggleTl(this)">
-          <div class="tl-anchor"><div class="tl-year">2024</div></div>
-          <div class="tl-dot"></div>
-          <div class="tl-header">
-            <div><div class="tl-company">蟠桃计划 (Peaches)</div><div class="tl-role">品牌扩张中心项目管理</div></div>
-            <div class="tl-plus">+</div>
-          </div>
-          <div class="tl-body"><div class="tl-body-inner">
-            <div class="tl-desc">
-              <p>深耕影视 IP 与创意营销，负责项目整体进度管控。独立完成中剧大纲，并输出核心提案 PPT 驱动项目落地。</p>
-            </div>
-            <div class="tl-chips"><span class="tl-chip">IP 孵化</span><span class="tl-chip">进度管控</span></div>
-          </div></div>
-        </div>
+            <!-- 章节 2: GSAP 滚动浮现工作哲学 -->
+            <section class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel mt-32 relative pointer-events-auto">
+                <div class="max-w-4xl mx-auto">
+                    <div class="font-mono text-xs tracking-widest text-white/40 mb-8 uppercase">Working Philosophy</div>
+                    <!-- 融合简历内容与科幻悬疑氛围的长句 -->
+                    <h2 data-scroll-reveal data-text-class="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/90 leading-snug">
+                        在理性的项目统筹与感性的影像叙事间寻找平衡。
+                    </h2>
+                </div>
+            </section>
 
-        <div class="tl-item" onclick="toggleTl(this)">
-          <div class="tl-anchor"><div class="tl-year">2023</div></div>
-          <div class="tl-dot"></div>
-          <div class="tl-header">
-            <div><div class="tl-company">小苔藓编剧训练营</div><div class="tl-role">剧本策划</div></div>
-            <div class="tl-plus">+</div>
-          </div>
-          <div class="tl-body"><div class="tl-body-inner">
-            <div class="tl-desc">
-              <p>深度参与剧本大纲研讨，成功将科幻小说《傻子》改编为电影大纲。</p>
+            <!-- 章节 3: 履历元数据 (双列错位排版) -->
+            <section class="min-h-screen p-6 md:p-10 py-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto pointer-events-auto">
+                    
+                    <!-- 列 1: 策略与执行 -->
+                    <div class="space-y-16 mt-20" data-reveal>
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">01 / Strategy & Execution</div>
+                        
+                        <!-- 新增：上影节 x 大麦项目 -->
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">上海国际电影节 × 大麦 APP</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4">新媒体运营 | 看完不说憋得慌</p>
+                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed mb-3">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
+                            <!-- 截图/详情跳转入口 -->
+                            <a href="#screenshot-modal" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1">
+                                [ View Data Evidence ]
+                            </a>
+                        </div>
+
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">FIRST 青年电影展</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4">品牌助理实习生 | 2025.08 - 2026.01</p>
+                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
+                        </div>
+
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">SHEIN & 蔚蓝视界</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4">HR实习生 ｜ 文案策划 | 2021 - 2022</p>
+                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">处理招聘数据流，优化组织透明度；负责《星汉灿烂》剧集的社媒文案与舆情监测，单平台获赞破 30w+，以数据指导内容运营。</p>
+                        </div>
+                    </div>
+
+                    <!-- 列 2: 剧本与影像 -->
+                    <div class="space-y-16" data-reveal style="--reveal-delay: 0.2">
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">02 / Cinematic Narrative</div>
+                        
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">优酷·七猫影业·蜃桃计划</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4">IP 改编组 | 2024.07 - 2024.10</p>
+                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p>
+                        </div>
+
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">快看漫画条漫大赛</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4">最佳脑洞奖 | 2021.08 - 2021.11</p>
+                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg mt-20 pointer-events-auto">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+                <div>
+                    <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
+                    <a href="mailto:contact@example.com" class="font-mono text-sm hover:opacity-70 transition-opacity">contact@xijin.space</a>
+                </div>
+                <div class="font-mono text-xs text-white/40">
+                    &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
+                    NEW YORK / MACAU 
+                </div>
             </div>
-            <div class="tl-chips"><span class="tl-chip">文本改编</span><span class="
+        </footer>
+
+    </div>
+
+    <!-- 交互与动效脚本 -->
+    <script>
+        // 1. 视频加载逻辑
+        const VIDEO_URL = '网页背景.mp4'; 
+        const video = document.getElementById('hero-video');
+        let isLoaded = false;
+        
+        const handleLoaded = () => {
+            if (isLoaded) return;
+            isLoaded = true;
+            document.body.dataset.loaded = 'true'; 
+        };
+        
+        if (video) {
+            video.addEventListener('loadeddata', handleLoaded);
+            video.addEventListener('canplay', handleLoaded);
+            video.addEventListener('canplaythrough', handleLoaded);
+            video.load();
+            setTimeout(handleLoaded, 3000); // 3秒兜底解锁
+            
+            // 2. 滚动驱动视频 Scrub
+            window.addEventListener('scroll', () => {
+                if (!isLoaded || !video || !video.duration || video.seeking) return;
+                const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                const scrollFraction = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+                video.currentTime = scrollFraction * video.duration;
+            }, { passive: true });
+        }
+
+        // 3. GSAP 文字逐词浮现
+        if (window.gsap && window.ScrollTrigger) {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            document.querySelectorAll('[data-scroll-reveal]').forEach((el) => {
+                const text = el.textContent || '';
+                el.textContent = '';
+                el.classList.add('scroll-reveal');
+                
+                const p = document.createElement('p');
+                p.className = 'scroll-reveal-text ' + (el.dataset.textClass || '');
+                
+                text.split(/(\s+)/).forEach((part) => {
+                    if (!part) return;
+                    const span = document.createElement('span');
+                    span.className = 'word';
+                    span.textContent = part;
+                    p.appendChild(span);
+                });
+                
+                el.appendChild(p);
+                
+                gsap.fromTo(el, { rotate: 3, transformOrigin: '0% 50%' }, { rotate: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom bottom', scrub: true } });
+                gsap.fromTo(p.querySelectorAll('.word'), { opacity: 0.1 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom-=20%', end: 'bottom bottom', scrub: true } });
+                gsap.fromTo(p.querySelectorAll('.word'), { filter: 'blur(4px)' }, { filter: 'blur(0px)', stagger: 0.05, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom-=20%', end: 'bottom bottom', scrub: true } });
+            });
+        }
+
+        // 4. IntersectionObserver 元素上浮展现
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.dataset.reveal = 'visible';
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '-50px' });
+        
+        document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+    </script>
+</body>
+</html>
