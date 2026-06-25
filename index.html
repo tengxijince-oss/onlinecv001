@@ -7,7 +7,6 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- cinematic-editorial 字体 -->
     <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +15,6 @@
             theme: { 
                 extend: {
                     fontFamily: {
-                        // 启用 cinematic-editorial
                         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
                     },
@@ -32,7 +30,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* Loading 屏逻辑 */
         body[data-loaded="true"] #loading {
             opacity: 0;
             visibility: hidden;
@@ -42,7 +39,6 @@
             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
 
-        /* 视频背景全屏铺满 */
         #video-bg video {
             position: absolute; 
             top: 50%; 
@@ -53,7 +49,6 @@
             object-fit: cover;
         }
 
-        /* 玻璃态质感辅助 */
         .glass-panel {
             background: rgba(10, 10, 10, 0.4);
             backdrop-filter: blur(12px);
@@ -61,12 +56,10 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 滚动文字动画 CSS */
         .scroll-reveal { margin: 0; }
         .scroll-reveal-text { display: flex; flex-wrap: wrap; margin: 0; }
         .word { display: inline-block; white-space: pre; }
 
-        /* 视口 Reveal 动画 CSS */
         [data-reveal] {
             opacity: 0;
             transform: translateY(30px);
@@ -81,29 +74,25 @@
 </head>
 <body class="bg-obsidian text-white/90 antialiased selection:bg-white/20">
 
-    <!-- z-50 Loading 屏 -->
     <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-obsidian text-white font-mono text-sm tracking-widest">
         INITIALIZING SEQUENCE...
     </div>
 
-    <!-- z-0 视频背景 -->
-   <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
+    <!-- 视频背景层：已清理冲突代码，开启自动循环播放 -->
+    <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
         <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
         <video id="hero-video" autoplay loop muted playsinline class="z-0">
             <source src="bg.mp4" type="video/mp4" />
         </video>
     </div>
 
-    <!-- z-10 内容层 -->
     <div class="relative z-10 pointer-events-none">
-        
-        <!-- z-20 Header -->
         <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
             <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
                 Xijin (Morgan) Teng <br/>
                 <span class="text-white/50 text-xs">V.2026.06</span>
             </div>
-            <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase">
+            <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex">
                 <a href="#" class="hover:text-white/50 transition-colors">Strategy</a>
                 <a href="#" class="hover:text-white/50 transition-colors">Film</a>
                 <a href="#" class="hover:text-white/50 transition-colors">Entropy</a>
@@ -112,7 +101,6 @@
         </header>
 
         <main>
-            <!-- 章节 1: Hero -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
                 <div class="max-w-5xl" data-reveal style="--reveal-delay: 0.5">
                     <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold uppercase leading-[0.9] mb-8">
@@ -122,7 +110,7 @@
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
                         <p class="font-sans text-base md:text-lg max-w-md font-light leading-relaxed text-white/80">
-                            纽约大学整合营销硕士<span class="font-semibold text-white"></span>以理性的数据分析拆解市场，用感性的创意重塑故事与记忆。
+                            纽约大学整合营销硕士。以理性的数据分析拆解市场，用感性的创意重塑故事与记忆。
                         </p>
                         
                         <a href="#about" class="pointer-events-auto group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors">
@@ -133,31 +121,25 @@
                 </div>
             </section>
 
-            <!-- 章节 2: GSAP 滚动浮现工作哲学 -->
-            <section class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel mt-32 relative pointer-events-auto">
+            <section class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel mt-32 relative pointer-events-auto" id="about">
                 <div class="max-w-4xl mx-auto">
                     <div class="font-mono text-xs tracking-widest text-white/40 mb-8 uppercase">Working Philosophy</div>
-                    <!-- 融合简历内容与科幻悬疑氛围的长句 -->
                     <h2 data-scroll-reveal data-text-class="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/90 leading-snug">
-                        在理性的项目统筹与感性的影像叙事间寻找平衡。
+                        在这个充满信息熵的世界里，每一次品牌触达都是一次对抗遗忘的尝试。从引爆社交媒体的电影节话题，到斩获最佳脑洞奖的剧本框架，我始终在理性的项目统筹与感性的影像叙事间寻找平衡。
                     </h2>
                 </div>
             </section>
 
-            <!-- 章节 3: 履历元数据 (双列错位排版) -->
             <section class="min-h-screen p-6 md:p-10 py-32">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto pointer-events-auto">
                     
-                    <!-- 列 1: 策略与执行 -->
                     <div class="space-y-16 mt-20" data-reveal>
                         <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">01 / Strategy & Execution</div>
                         
-                        <!-- 新增：上影节 x 大麦项目 -->
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">上海国际电影节 × 大麦 APP</h3>
                             <p class="font-mono text-xs text-white/50 mb-4">新媒体运营 | 看完不说憋得慌</p>
                             <p class="font-sans text-sm font-light text-white/70 leading-relaxed mb-3">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
-                            <!-- 截图/详情跳转入口 -->
                             <a href="#screenshot-modal" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1">
                                 [ View Data Evidence ]
                             </a>
@@ -176,7 +158,6 @@
                         </div>
                     </div>
 
-                    <!-- 列 2: 剧本与影像 -->
                     <div class="space-y-16" data-reveal style="--reveal-delay: 0.2">
                         <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">02 / Cinematic Narrative</div>
                         
@@ -197,7 +178,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg mt-20 pointer-events-auto">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
@@ -206,16 +186,15 @@
                 </div>
                 <div class="font-mono text-xs text-white/40">
                     &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
-                    NEW YORK / MACAU 
+                    NEW YORK / MACAU / SHANGHAI
                 </div>
             </div>
         </footer>
 
     </div>
 
-    <!-- 交互与动效脚本 -->
     <script>
-        // 1. 视频加载逻辑
+        // 1. 视频加载逻辑（已移除冲突的滚动侦听）
         const VIDEO_URL = 'bg.mp4'; 
         const video = document.getElementById('hero-video');
         let isLoaded = false;
@@ -231,18 +210,10 @@
             video.addEventListener('canplay', handleLoaded);
             video.addEventListener('canplaythrough', handleLoaded);
             video.load();
-            setTimeout(handleLoaded, 3000); // 3秒兜底解锁
-            
-            // 2. 滚动驱动视频 Scrub
-            window.addEventListener('scroll', () => {
-                if (!isLoaded || !video || !video.duration || video.seeking) return;
-                const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-                const scrollFraction = Math.max(0, Math.min(1, window.scrollY / maxScroll));
-                video.currentTime = scrollFraction * video.duration;
-            }, { passive: true });
+            setTimeout(handleLoaded, 3000); 
         }
 
-        // 3. GSAP 文字逐词浮现
+        // 2. GSAP 文字逐词浮现
         if (window.gsap && window.ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger);
             
@@ -270,7 +241,7 @@
             });
         }
 
-        // 4. IntersectionObserver 元素上浮展现
+        // 3. IntersectionObserver 元素上浮展现
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
