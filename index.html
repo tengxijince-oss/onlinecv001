@@ -30,6 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* Loading 屏逻辑 */
         body[data-loaded="true"] #loading {
             opacity: 0;
             visibility: hidden;
@@ -39,6 +40,7 @@
             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
 
+        /* 视频背景全屏铺满 */
         #video-bg video {
             position: absolute; 
             top: 50%; 
@@ -78,10 +80,9 @@
         INITIALIZING SEQUENCE...
     </div>
 
-    <!-- 视频背景层：已清理冲突代码，开启自动循环播放 -->
     <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
         <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
-     <video id="hero-video" muted playsinline preload="auto" class="z-0">
+        <video id="hero-video" muted playsinline preload="auto" class="z-0">
             <source src="bg.mp4" type="video/mp4" />
         </video>
     </div>
@@ -182,7 +183,7 @@
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
                     <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
-                    <a href="mailto:contact@example.com" class="font-mono text-sm hover:opacity-70 transition-opacity">contact@xijin.space</a>
+                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity">contact@xijin.space</a>
                 </div>
                 <div class="font-mono text-xs text-white/40">
                     &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
@@ -192,8 +193,9 @@
         </footer>
 
     </div>
+
     <script>
-   // 1. 视频加载与滚动驱动逻辑
+        // 1. 视频加载与滚动驱动逻辑
         const VIDEO_URL = 'bg.mp4'; 
         const video = document.getElementById('hero-video');
         let isLoaded = false;
@@ -209,9 +211,9 @@
             video.addEventListener('canplay', handleLoaded);
             video.addEventListener('canplaythrough', handleLoaded);
             video.load();
-            setTimeout(handleLoaded, 3000); // 3秒兜底解锁
+            setTimeout(handleLoaded, 3000); 
             
-            // 就是下面这段让视频跟着滚动走的魔法代码
+            // 魔法在此：视频跟随滚动条播放
             window.addEventListener('scroll', () => {
                 if (!isLoaded || !video || !video.duration || video.seeking) return;
                 const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
