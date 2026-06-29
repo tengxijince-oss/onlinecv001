@@ -124,25 +124,6 @@
                 </div>
             </section>
 
-            <!-- ========== 新增的 ABOUT ME 板块 ========== -->
-            <section id="about" class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel relative pointer-events-auto mt-20">
-                <div class="max-w-4xl mx-auto w-full" data-reveal>
-                    <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">ABOUT ME</div>
-                    
-                    <!-- 个人哲学的文字被移到了这里，作为 About Me 的核心叙事 -->
-                    <h2 class="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/90 leading-snug font-bold">
-                        在这个充满信息熵的世界里，每一次品牌触达都是一次对抗遗忘的尝试。从引爆社交媒体的话题，到荣获大奖的剧本，我始终在理性的项目统筹与感性的影像叙事间寻找平衡。
-                    </h2>
-                    
-                    <div class="mt-12 flex flex-col md:flex-row gap-8 items-start">
-                        <!-- 可以自行修改这里的补充介绍文字 -->
-                        <p class="font-sans text-sm text-white/70 leading-relaxed font-bold max-w-lg">
-                            习惯于用数据为锚点构建商业策略，同时用镜头和文字去捕捉人类的共鸣。无论是平台运营、品牌公关，还是独立创作者的表达，对我而言，都是在构建新的现实。
-                        </p>
-                    </div>
-                </div>
-            </section>
-
           <!-- 01 / Education 区域 -->
             <section class="min-h-screen flex flex-col justify-center p-6 md:p-10 py-32 mt-20 relative pointer-events-auto" id="education">
                 <div class="max-w-6xl mx-auto w-full" data-reveal>
@@ -183,16 +164,16 @@
                             </a>
 
                             <!-- ========== 新增部分：隐藏的图片下拉框 ========== -->
-                            <div id="evidence-dropdown" class="hidden mt-6 space-y-4 p-5 glass-panel rounded">
-                                <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-2">⬇ CLICK THE SECOND IMAGE TO VIEW ON XIAOHONGSHU</p>
+                           <div id="evidence-dropdown" class="hidden mt-6 p-5 glass-panel rounded border border-white/10">
+                                <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-4 text-center">⬇ CLICK THE RIGHT IMAGE TO VIEW ON XIAOHONGSHU</p>
                                 
-                                <!-- 第一张图：仅展示 -->
-                                <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto opacity-80 hover:opacity-100 transition-opacity rounded-sm">
-                                
-                                <!-- 第二张图：点击跳转小红书 -->
-                                <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block">
-                                    <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto border border-white/20 hover:border-white/80 transition-all rounded-sm cursor-pointer">
-                                </a>
+                                <div class="grid grid-cols-2 gap-4 items-start">
+                                    <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto rounded-sm opacity-80 hover:opacity-100 transition-opacity shadow-lg">
+                                    
+                                    <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block relative group">
+                                        <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto rounded-sm border border-white/20 group-hover:border-white/80 transition-all cursor-pointer shadow-lg group-hover:scale-[1.02] duration-300">
+                                    </a>
+                                </div>
                             </div>
                             <!-- ============================================== -->
                         </div>
