@@ -51,6 +51,18 @@
             object-fit: cover;
         }
 
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 给 HTML 增加平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+
         [data-reveal] {
             opacity: 0;
             transform: translateY(30px);
@@ -85,6 +97,7 @@
                 ENTROPY <br/>
                 <span class="text-white/50 text-xs font-bold">V.2026.06</span>
             </div>
+            <!-- 点击这里的 ABOUT ME 会自动下滑到下面的新板块 -->
             <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex font-bold">
                 <a href="#about" class="hover:text-white/50 transition-colors">ABOUT ME</a>
             </nav>
@@ -100,7 +113,7 @@
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
                         <p class="font-sans text-base md:text-lg max-w-md leading-relaxed text-white/80 font-bold">
-                            靠谱的INTJ，
+                            靠谱的INTJ  有感知力的storyteller
                         </p>
                         
                         <a href="#about" class="pointer-events-auto group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold">
@@ -111,8 +124,27 @@
                 </div>
             </section>
 
-            <!-- 01 / Education 区域（取消毛玻璃，调整为清晰列表排版） -->
-            <section class="min-h-screen flex flex-col justify-center p-6 md:p-10 py-32 mt-20 relative pointer-events-auto" id="about">
+            <!-- ========== 新增的 ABOUT ME 板块 ========== -->
+            <section id="about" class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel relative pointer-events-auto mt-20">
+                <div class="max-w-4xl mx-auto w-full" data-reveal>
+                    <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">ABOUT ME</div>
+                    
+                    <!-- 个人哲学的文字被移到了这里，作为 About Me 的核心叙事 -->
+                    <h2 class="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/90 leading-snug font-bold">
+                        在这个充满信息熵的世界里，每一次品牌触达都是一次对抗遗忘的尝试。从引爆社交媒体的话题，到荣获大奖的剧本，我始终在理性的项目统筹与感性的影像叙事间寻找平衡。
+                    </h2>
+                    
+                    <div class="mt-12 flex flex-col md:flex-row gap-8 items-start">
+                        <!-- 可以自行修改这里的补充介绍文字 -->
+                        <p class="font-sans text-sm text-white/70 leading-relaxed font-bold max-w-lg">
+                            习惯于用数据为锚点构建商业策略，同时用镜头和文字去捕捉人类的共鸣。无论是平台运营、品牌公关，还是独立创作者的表达，对我而言，都是在构建新的现实。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 01 / Education 区域 (修改了原有的 id) -->
+            <section class="min-h-screen flex flex-col justify-center p-6 md:p-10 py-32 mt-20 relative pointer-events-auto" id="education">
                 <div class="max-w-6xl mx-auto w-full" data-reveal>
                     <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-12 border-b border-white/10 pb-4 font-bold">01 / Education</div>
                     
@@ -139,19 +171,35 @@
                     <div class="space-y-16 mt-20" data-reveal>
                         <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">02 / Working Experience</div>
                         
-                        <div class="group cursor-default">
+                        <div class="group cursor-default relative">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">上海国际电影节 × 大麦 APP</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">新媒体运营 | 看完不说憋得慌</p>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">新媒体运营 | 看完不说憋得慌｜2026.06 </p>
                             <p class="font-sans text-sm text-white/70 leading-relaxed mb-3 font-bold">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
-                            <a href="#screenshot-modal" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1 font-bold">
+                            
+                            <!-- ========== 修改部分：下拉触发按钮 ========== -->
+                            <a href="javascript:void(0)" onclick="document.getElementById('evidence-dropdown').classList.toggle('hidden')" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1 font-bold">
                                 [ View Data Evidence ]
                             </a>
+
+                            <!-- ========== 新增部分：隐藏的图片下拉框 ========== -->
+                            <div id="evidence-dropdown" class="hidden mt-6 space-y-4 p-5 glass-panel rounded">
+                                <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-2">⬇ CLICK THE SECOND IMAGE TO VIEW ON XIAOHONGSHU</p>
+                                
+                                <!-- 第一张图：仅展示 -->
+                                <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto opacity-80 hover:opacity-100 transition-opacity rounded-sm">
+                                
+                                <!-- 第二张图：点击跳转小红书 -->
+                                <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block">
+                                    <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto border border-white/20 hover:border-white/80 transition-all rounded-sm cursor-pointer">
+                                </a>
+                            </div>
+                            <!-- ============================================== -->
                         </div>
 
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">FIRST 青年电影展</h3>
                             <p class="font-mono text-xs text-white/50 mb-4 font-bold">品牌助理实习生 | 2025.08 - 2026.01</p>
-                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">全程参与「FIRST惊喜影展」对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
                         </div>
 
                         <div class="group cursor-default">
@@ -166,7 +214,7 @@
                         <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">03 / Project Experience</div>
                         
                         <div class="group cursor-default">
-                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">优酷·七猫影业·蜃桃计划</h3>
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">优酷·七猫影业·蟠桃计划</h3>
                             <p class="font-mono text-xs text-white/50 mb-4 font-bold">IP 改编组 | 2024.07 - 2024.10</p>
                             <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p>
                         </div>
@@ -174,12 +222,12 @@
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">快看漫画条漫大赛</h3>
                             <p class="font-mono text-xs text-white/50 mb-4 font-bold">最佳脑洞奖 | 2021.08 - 2021.11</p>
-                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">独立结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
                         </div>
 
-                        <!-- 新增：志愿者经历 -->
+                        <!-- 志愿者经历 -->
                         <div class="group cursor-default">
-                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">纽约 / 北京国际电影节</h3>
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">北京国际电影节 / 纽约国际电影节</h3>
                             <p class="font-mono text-xs text-white/50 mb-4 font-bold">官方志愿者 | 2022.08 & 2024.10</p>
                             <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">先后参与第12届北京国际电影节与第62届纽约电影节。负责红毯嘉宾接待、现场秩序维护及商品团队的统筹协作，在热爱中近距离支持影像艺术。</p>
                         </div>
@@ -194,11 +242,11 @@
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
                     <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
-                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">contact@xijin.space</a>
+                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">tengxijince@163.com/a>
                 </div>
                 <div class="font-mono text-xs text-white/40 font-bold">
                     &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
-                    NEW YORK / MACAU / SHANGHAI
+                    NEW YORK / MACAU CHINA
                 </div>
             </div>
         </footer>
