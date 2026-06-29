@@ -143,12 +143,13 @@
                 </div>
             </section>
 
-            <!-- 01 / Education 区域 (修改了原有的 id) -->
+          <!-- 01 / Education 区域 -->
             <section class="min-h-screen flex flex-col justify-center p-6 md:p-10 py-32 mt-20 relative pointer-events-auto" id="education">
                 <div class="max-w-6xl mx-auto w-full" data-reveal>
                     <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-12 border-b border-white/10 pb-4 font-bold">01 / Education</div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <!-- 关键修改：把原来的双列去掉了，改成单列且控制宽度（md:w-1/2），让它和下方的工作经历左对齐并上下排列 -->
+                    <div class="flex flex-col space-y-16 md:w-[45%]">
                         <div class="group cursor-default">
                             <h3 class="font-sans text-2xl font-medium mb-3 group-hover:text-white/70 transition-colors">纽约大学 (NYU)</h3>
                             <p class="font-mono text-xs text-white/50 mb-4 font-bold">整合营销 - 市场分析 硕士 | 2023.09 - 2025.06</p>
@@ -242,7 +243,7 @@
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
                     <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
-                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">tengxijince@163.com/a>
+                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">tengxijince@163.com</a>
                 </div>
                 <div class="font-mono text-xs text-white/40 font-bold">
                     &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
