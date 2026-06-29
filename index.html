@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xijin Teng | Portfolio</title>
+    <title>Xijin Teng | Resume</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,17 +51,6 @@
             object-fit: cover;
         }
 
-        .glass-panel {
-            background: rgba(10, 10, 10, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .scroll-reveal { margin: 0; }
-        .scroll-reveal-text { display: flex; flex-wrap: wrap; margin: 0; }
-        .word { display: inline-block; white-space: pre; }
-
         [data-reveal] {
             opacity: 0;
             transform: translateY(30px);
@@ -76,10 +65,11 @@
 </head>
 <body class="bg-obsidian text-white/90 antialiased selection:bg-white/20">
 
-    <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-obsidian text-white font-mono text-sm tracking-widest">
+    <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-obsidian text-white font-mono text-sm tracking-widest font-bold">
         INITIALIZING SEQUENCE...
     </div>
 
+    <!-- 视频背景层 -->
     <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
         <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
         <video id="hero-video" muted playsinline preload="auto" class="z-0">
@@ -88,33 +78,32 @@
     </div>
 
     <div class="relative z-10 pointer-events-none">
+        
+        <!-- Header -->
         <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
             <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
-                Xijin (Morgan) Teng <br/>
-                <span class="text-white/50 text-xs">V.2026.06</span>
+                ENTROPY <br/>
+                <span class="text-white/50 text-xs font-bold">V.2026.06</span>
             </div>
-            <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex">
-                <a href="#" class="hover:text-white/50 transition-colors">Strategy</a>
-                <a href="#" class="hover:text-white/50 transition-colors">Film</a>
-                <a href="#" class="hover:text-white/50 transition-colors">Entropy</a>
-                <a href="#" class="hover:text-white/50 transition-colors">Index</a>
+            <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex font-bold">
+                <a href="#about" class="hover:text-white/50 transition-colors">ABOUT ME</a>
             </nav>
         </header>
 
         <main>
+            <!-- Hero 区域 -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
                 <div class="max-w-5xl" data-reveal style="--reveal-delay: 0.5">
                     <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold uppercase leading-[0.9] mb-8">
-                        Data Driven.<br/>
-                        <span class="text-white/60">Story Obsessed.</span>
+                        XIJIN TENG
                     </h1>
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
-                        <p class="font-sans text-base md:text-lg max-w-md font-light leading-relaxed text-white/80">
-                            纽约大学整合营销硕士。以理性的数据分析拆解市场，用感性的创意重塑故事与记忆。
+                        <p class="font-sans text-base md:text-lg max-w-md leading-relaxed text-white/80 font-bold">
+                            靠谱的INTJ，
                         </p>
                         
-                        <a href="#about" class="pointer-events-auto group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors">
+                        <a href="#about" class="pointer-events-auto group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold">
                             Enter the World
                             <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
@@ -122,56 +111,77 @@
                 </div>
             </section>
 
-            <section class="min-h-screen flex items-center justify-center p-6 md:p-10 py-32 glass-panel mt-32 relative pointer-events-auto" id="about">
-                <div class="max-w-4xl mx-auto">
-                    <div class="font-mono text-xs tracking-widest text-white/40 mb-8 uppercase">Working Philosophy</div>
-                    <h2 data-scroll-reveal data-text-class="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/90 leading-snug">
-                        在这个充满信息熵的世界里，每一次品牌触达都是一次对抗遗忘的尝试。从引爆社交媒体的电影节话题，到斩获最佳脑洞奖的剧本框架，我始终在理性的项目统筹与感性的影像叙事间寻找平衡。
-                    </h2>
+            <!-- 01 / Education 区域（取消毛玻璃，调整为清晰列表排版） -->
+            <section class="min-h-screen flex flex-col justify-center p-6 md:p-10 py-32 mt-20 relative pointer-events-auto" id="about">
+                <div class="max-w-6xl mx-auto w-full" data-reveal>
+                    <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-12 border-b border-white/10 pb-4 font-bold">01 / Education</div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-2xl font-medium mb-3 group-hover:text-white/70 transition-colors">纽约大学 (NYU)</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">整合营销 - 市场分析 硕士 | 2023.09 - 2025.06</p>
+                            <p class="font-sans text-sm text-white/80 leading-relaxed font-bold">主修数字营销、数据库管理、商业分析与数据可视化、战略管理等。以理性的数据分析拆解市场，寻找精准定位。</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-2xl font-medium mb-3 group-hover:text-white/70 transition-colors">澳门科技大学 (M.U.S.T.)</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">工商管理 - 市场营销 学士 | 2019.09 - 2023.06</p>
+                            <p class="font-sans text-sm text-white/80 leading-relaxed font-bold">主修品牌管理、消费者行为、营销调研等，奠定扎实的商业策略思维与项目统筹基础。</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
+            <!-- 02 & 03 履历网格 -->
             <section class="min-h-screen p-6 md:p-10 py-32">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto pointer-events-auto">
                     
+                    <!-- 02 / Working Experience -->
                     <div class="space-y-16 mt-20" data-reveal>
-                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">01 / Strategy & Execution</div>
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">02 / Working Experience</div>
                         
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">上海国际电影节 × 大麦 APP</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4">新媒体运营 | 看完不说憋得慌</p>
-                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed mb-3">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
-                            <a href="#screenshot-modal" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1">
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">新媒体运营 | 看完不说憋得慌</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed mb-3 font-bold">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
+                            <a href="#screenshot-modal" class="inline-flex items-center gap-2 font-mono text-xs text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1 font-bold">
                                 [ View Data Evidence ]
                             </a>
                         </div>
 
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">FIRST 青年电影展</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4">品牌助理实习生 | 2025.08 - 2026.01</p>
-                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">品牌助理实习生 | 2025.08 - 2026.01</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
                         </div>
 
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">SHEIN & 蔚蓝视界</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4">HR实习生 ｜ 文案策划 | 2021 - 2022</p>
-                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">处理招聘数据流，优化组织透明度；负责《星汉灿烂》剧集的社媒文案与舆情监测，单平台获赞破 30w+，以数据指导内容运营。</p>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">HR实习生 ｜ 文案策划 | 2021 - 2022</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">处理招聘数据流，优化组织透明度；负责《星汉灿烂》剧集的社媒文案与舆情监测，单平台获赞破 30w+，以数据指导内容运营。</p>
                         </div>
                     </div>
 
+                    <!-- 03 / Project Experience -->
                     <div class="space-y-16" data-reveal style="--reveal-delay: 0.2">
-                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4">02 / Cinematic Narrative</div>
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">03 / Project Experience</div>
                         
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">优酷·七猫影业·蜃桃计划</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4">IP 改编组 | 2024.07 - 2024.10</p>
-                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">IP 改编组 | 2024.07 - 2024.10</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p>
                         </div>
 
                         <div class="group cursor-default">
                             <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">快看漫画条漫大赛</h3>
-                            <p class="font-mono text-xs text-white/50 mb-4">最佳脑洞奖 | 2021.08 - 2021.11</p>
-                            <p class="font-sans text-sm font-light text-white/70 leading-relaxed">结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">最佳脑洞奖 | 2021.08 - 2021.11</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
+                        </div>
+
+                        <!-- 新增：志愿者经历 -->
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">纽约 / 北京国际电影节</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">官方志愿者 | 2022.08 & 2024.10</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">先后参与第12届北京国际电影节与第62届纽约电影节。负责红毯嘉宾接待、现场秩序维护及商品团队的统筹协作，在热爱中近距离支持影像艺术。</p>
                         </div>
                     </div>
 
@@ -179,13 +189,14 @@
             </section>
         </main>
 
+        <!-- Footer -->
         <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg mt-20 pointer-events-auto">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
                     <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
-                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity">contact@xijin.space</a>
+                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">contact@xijin.space</a>
                 </div>
-                <div class="font-mono text-xs text-white/40">
+                <div class="font-mono text-xs text-white/40 font-bold">
                     &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
                     NEW YORK / MACAU / SHANGHAI
                 </div>
@@ -194,6 +205,7 @@
 
     </div>
 
+    <!-- 所有的 JavaScript -->
     <script>
         // 1. 视频加载与滚动驱动逻辑
         const VIDEO_URL = 'bg.mp4'; 
@@ -213,7 +225,7 @@
             video.load();
             setTimeout(handleLoaded, 3000); 
             
-            // 魔法在此：视频跟随滚动条播放
+            // 视频跟随滚动条播放
             window.addEventListener('scroll', () => {
                 if (!isLoaded || !video || !video.duration || video.seeking) return;
                 const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
@@ -222,35 +234,7 @@
             }, { passive: true });
         }
 
-        // 2. GSAP 文字逐词浮现
-        if (window.gsap && window.ScrollTrigger) {
-            gsap.registerPlugin(ScrollTrigger);
-            
-            document.querySelectorAll('[data-scroll-reveal]').forEach((el) => {
-                const text = el.textContent || '';
-                el.textContent = '';
-                el.classList.add('scroll-reveal');
-                
-                const p = document.createElement('p');
-                p.className = 'scroll-reveal-text ' + (el.dataset.textClass || '');
-                
-                text.split(/(\s+)/).forEach((part) => {
-                    if (!part) return;
-                    const span = document.createElement('span');
-                    span.className = 'word';
-                    span.textContent = part;
-                    p.appendChild(span);
-                });
-                
-                el.appendChild(p);
-                
-                gsap.fromTo(el, { rotate: 3, transformOrigin: '0% 50%' }, { rotate: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom bottom', scrub: true } });
-                gsap.fromTo(p.querySelectorAll('.word'), { opacity: 0.1 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom-=20%', end: 'bottom bottom', scrub: true } });
-                gsap.fromTo(p.querySelectorAll('.word'), { filter: 'blur(4px)' }, { filter: 'blur(0px)', stagger: 0.05, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom-=20%', end: 'bottom bottom', scrub: true } });
-            });
-        }
-
-        // 3. IntersectionObserver 元素上浮展现
+        // 2. IntersectionObserver 元素上浮展现
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
