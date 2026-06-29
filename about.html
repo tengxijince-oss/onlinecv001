@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me | Xijin Teng</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { 
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0A0A0A',
+                    }
+                } 
+            },
+        };
+    </script>
+    
+    <style>
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: calc(var(--reveal-delay, 0) * 1s);
+        }
+        [data-reveal="visible"] { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 15% 40%, rgba(255,255,255,0.025) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 15%, rgba(255,255,255,0.018) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        html { scroll-behavior: smooth; }
+        .tool-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: rgba(255,255,255,0.45);
+            transition: all 0.2s ease;
+        }
+        .tool-tag:hover {
+            border-color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.9);
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-white/90 antialiased selection:bg-white/20 relative">
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
+        <a href="index.html" class="font-mono text-sm tracking-widest font-bold uppercase hover:text-white/40 transition-colors flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            ENTROPY
+        </a>
+        <div class="font-mono text-xs tracking-widest text-white/25 font-bold uppercase hidden md:block">
+            ABOUT ME
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-36 pb-20">
+
+        <!-- Hero -->
+        <section class="px-6 md:px-10 mb-28" data-reveal>
+            <div class="max-w-4xl mx-auto">
+                <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-8 font-bold">XIJIN TENG / ABOUT ME</p>
+                <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase leading-[0.88] mb-10">
+                    靠谱的INTJ<br/>有感知力的<br/>STORYTELLER
+                </h1>
+                <div class="w-12 h-px bg-white/20 mb-8"></div>
+                <p class="font-sans text-base md:text-lg text-white/45 max-w-lg leading-relaxed font-medium">
+                    从太空到深空，我一直在想同一个问题：人在虚构关系里，在寻找什么？
+                </p>
+            </div>
+        </section>
+
+        <!-- 01 / Origin -->
+        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+                <div>
+                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">01 / Origin</p>
+                </div>
+                <div class="space-y-5">
+                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">我怎么来到这里</h2>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        从小是科幻迷。人类在宇宙尺度上的渺小，以及"我们到底在向谁诉说"这个问题，一直是我理解世界的底色。后来我开始玩乙女游戏，《恋与深空》深度玩家，也在 Character AI 上花了不少时间。
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        再后来，我在影视公司做 IP 开发、在电影节做品牌、在小红书写内容。这三条线看起来不相关，但我发现它们其实是同一个问题的不同形态：<span class="text-white/90 font-semibold">人在虚构关系里，在寻找什么？</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 / Observation -->
+        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+                <div>
+                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">02 / Observation</p>
+                </div>
+                <div class="space-y-5">
+                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">我观察到了什么</h2>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        乙女游戏的情感设计有一个结构性悖论。
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        男主角是基于用户画像均值创造出来的——他本质上是一个商品，被设计成让尽可能多的人觉得"他是为我量身定制的"。但量身定制和批量生产在定义上互斥。一个男主角怕打雷，对大多数玩家可能很可爱，但那些完全不怕打雷的人，代入感就少了一块。游戏公司不会为此改剧情。
+                    </p>
+
+                    <!-- Pull quote -->
+                    <div class="glass-panel p-6 md:p-8 my-8">
+                        <p class="font-sans text-base md:text-lg text-white/80 leading-relaxed font-medium">
+                            "如果说乙游还是在卖故事和造梦，AI 情感陪伴是一个会融入日常生活的长期陪伴——它没有需要妥协的固定人设。只有自己会忠于自己。"
+                        </p>
+                    </div>
+
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        这个矛盾在乙游里无解，因为内容是固定交付的。你消费的是一个预设好的故事，不是一段真正属于你的关系。所以"被背刺"的风险始终存在——游戏公司的决策和你的喜好之间，永远有一道缝。
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        AI 情感陪伴的逻辑是反过来的。它不是让你去适应一个预设人物，而是持续适应你。它不会"背叛"你，不是因为它更忠诚，而是因为它没有需要妥协的固定人设。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 / Validation -->
+        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+                <div>
+                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">03 / Validation</p>
+                </div>
+                <div class="space-y-5">
+                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">我验证了什么</h2>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        我做了一个叫「情绪焚烧炉」的小工具。粒子火焰动画 + Claude API 驱动，你把情绪扔进去，它帮你烧掉。不需要整理，不需要结构，直接发泄。
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        这个项目让我想清楚了一件事：AI 情感产品最难的不是技术，是<span class="text-white/90 font-semibold">什么时候该说话，什么时候该保持沉默</span>。
+                    </p>
+
+                    <!-- AI Tools -->
+                    <div class="pt-6">
+                        <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-4 font-bold">我用过的 AI 工具</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tool-tag">Claude</span>
+                            <span class="tool-tag">Kling AI</span>
+                            <span class="tool-tag">Nano Banana</span>
+                            <span class="tool-tag">Character AI</span>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="pt-6 space-y-3">
+                        <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-4 font-bold">相关项目</p>
+                        <div class="glass-panel p-5">
+                            <p class="font-mono text-[10px] tracking-widest text-white/30 mb-2 font-bold uppercase">Vibe Coded Tool</p>
+                            <p class="font-sans text-sm text-white/75 font-medium">情绪焚烧炉 — 粒子动画 + Claude API 驱动的情绪释放工具</p>
+                        </div>
+                        <div class="glass-panel p-5">
+                            <p class="font-mono text-[10px] tracking-widest text-white/30 mb-2 font-bold uppercase">AI Short Film</p>
+                            <p class="font-sans text-sm text-white/75 font-medium">《熵 / ENTROPY》— AI sci-fi 短片脚本，使用 Kling AI 完成视觉生成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 / Still Thinking -->
+        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+                <div>
+                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">04 / Still Thinking</p>
+                </div>
+                <div class="space-y-5">
+                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">我还没想清楚的部分</h2>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        AI 陪伴产品说"只有自己会忠于自己"——但 AI 忠于的，是你的数据，还是你这个人？这两个东西不总是一样的。
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        作为一个想拍 sci-fi 的人，我最在意的问题是：当 AI 开始参与情感叙事的生产，"故事"这件事本身会变成什么？
+                    </p>
+                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
+                        我还在现场，还在想。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 md:px-10 py-10 border-t border-white/[0.07] relative z-10">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <a href="index.html" class="font-mono text-xs tracking-widest text-white/25 hover:text-white/60 transition-colors uppercase font-bold flex items-center gap-2">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Resume
+            </a>
+            <div class="font-mono text-xs text-white/25 font-bold">
+                &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.dataset.reveal = 'visible';
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '-50px' });
+        
+        document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+    </script>
+</body>
+</html>
