@@ -104,6 +104,8 @@
 
         <main>
             <!-- Hero 区域 -->
+          <main>
+            <!-- Hero 区域 (保持不变) -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
                 <div class="max-w-5xl" data-reveal style="--reveal-delay: 0.5">
                     <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold uppercase leading-[0.9] mb-8">
@@ -115,7 +117,6 @@
                             靠谱的INTJ  有感知力的storyteller
                         </p>
                         
-                        <!-- 这里的 cursor-default 取消了小手状态，href 修改为直接跳至教育经历 -->
                         <a href="#education" class="pointer-events-auto cursor-default group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold">
                             Enter the World
                             <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -124,11 +125,11 @@
                 </div>
             </section>
 
-            <!-- 01 / Education 区域 -->
+            <!-- 01 / Education 区域 (根据截图调整位置) -->
             <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto mt-20" id="education">
                 <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start" data-reveal>
                     
-                    <!-- 左侧：巨大数字与 Metadata -->
+                    <!-- 左侧：巨大数字与 Metadata + M.U.S.T 模块 -->
                     <div class="md:col-span-5 flex flex-col justify-start relative">
                         <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter -ml-4 md:-ml-8 select-none">
                             01
@@ -137,10 +138,26 @@
                             Chapter — 01 / 03 <br><br>
                             <span class="text-white/30">Object . Mind</span>
                         </div>
+
+                        <!-- 移至左侧的 M.U.S.T 模块 -->
+                        <div class="relative group cursor-default mt-12 md:mt-32">
+                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
+                                2019 — 2023
+                                <span class="h-[1px] w-12 bg-white/20"></span>
+                                MACAU, CHINA
+                            </div>
+                            <h2 class="font-sans text-5xl md:text-7xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
+                                M.U.S.T.
+                            </h2>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-sans text-sm text-white/90 font-bold tracking-wide">工商管理 - 市场营销 学士</p>
+                                <p class="font-sans text-xs text-white/50 leading-relaxed font-bold max-w-sm">主修品牌管理、消费者行为、营销调研等，奠定扎实的商业策略思维与项目统筹基础。</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 右侧：错落文字 -->
-                    <div class="md:col-span-7 flex flex-col gap-32 mt-20 md:mt-12">
+                    <!-- 右侧：NYU 模块 (描述移至标题下方) -->
+                    <div class="md:col-span-7 flex flex-col mt-20 md:mt-12">
                         
                         <div class="relative group cursor-default">
                             <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
@@ -151,24 +168,9 @@
                             <h2 class="font-sans text-6xl md:text-8xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
                                 NYU
                             </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">整合营销 - 市场分析 硕士</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">主修数字营销、数据库管理、商业分析与数据可视化、战略管理等。以理性的数据分析拆解市场，寻找精准定位。</p></div>
-                            </div>
-                        </div>
-
-                        <div class="relative group cursor-default md:ml-12">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2019 — 2023
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                MACAU
-                            </div>
-                            <h2 class="font-sans text-5xl md:text-7xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                M.U.S.T.
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">工商管理 - 市场营销 学士</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">主修品牌管理、消费者行为、营销调研等，奠定扎实的商业策略思维与项目统筹基础。</p></div>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-sans text-sm text-white/90 font-bold tracking-wide">整合营销 - 市场分析 硕士</p>
+                                <p class="font-sans text-xs text-white/50 leading-relaxed font-bold max-w-md">主修数字营销、数据库管理、商业分析与数据可视化、战略管理等。以理性的数据分析拆解市场，寻找精准定位。</p>
                             </div>
                         </div>
 
@@ -176,156 +178,79 @@
                 </div>
             </section>
 
-            <!-- 02 / Working Experience -->
-            <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto mt-20">
-                <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start" data-reveal>
+            <!-- 02 & 03 履历网格 (恢复初始双列布局) -->
+            <section class="min-h-screen p-6 md:p-10 py-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto pointer-events-auto">
                     
-                    <div class="md:col-span-5 flex flex-col justify-start relative">
-                        <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter -ml-4 md:-ml-8 select-none">
-                            02
-                        </span>
-                        <div class="absolute top-12 md:top-24 left-0 font-mono text-[10px] tracking-[0.3em] text-white/60 uppercase">
-                            Chapter — 02 / 03 <br><br>
-                            <span class="text-white/30">Object . Career</span>
-                        </div>
-                    </div>
-
-                    <div class="md:col-span-7 flex flex-col gap-32 mt-20 md:mt-12">
+                    <!-- 02 / Working Experience -->
+                    <div class="space-y-16 mt-20" data-reveal>
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">02 / Working Experience</div>
                         
-                        <!-- 经历 1 -->
-                        <div class="relative group cursor-default">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2026.06
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                SHANGHAI
-                            </div>
-                            <h2 class="font-sans text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                上海国际电影节<br><span class="text-2xl md:text-4xl text-white/50 tracking-normal">× 大麦 APP</span>
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">新媒体运营 | 看完不说憋得慌</p></div>
-                                <div>
-                                    <p class="font-sans text-xs text-white/50 leading-relaxed font-bold mb-4">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
+                        <div class="group cursor-default relative">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">上海国际电影节 × 大麦 APP</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">新媒体运营 | 看完不说憋得慌｜2026.06 </p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed mb-6 font-bold">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
+                            
+                            <!-- ========== 修改部分：毛玻璃效果按键 ========== -->
+                            <a href="javascript:void(0)" onclick="document.getElementById('evidence-dropdown').classList.toggle('hidden')" class="inline-flex items-center gap-2 font-mono text-xs text-white/90 glass-panel px-4 py-2.5 rounded-lg border border-white/20 hover:bg-white/10 hover:border-white/50 transition-all font-bold shadow-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                View Data Evidence
+                            </a>
+
+                            <!-- ========== 隐藏的图片下拉框 ========== -->
+                            <div id="evidence-dropdown" class="hidden mt-6 p-5 glass-panel rounded border border-white/10">
+                                <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-4 text-center">⬇ CLICK THE RIGHT IMAGE TO VIEW ON XIAOHONGSHU</p>
+                                
+                                <div class="grid grid-cols-2 gap-4 items-start">
+                                    <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto rounded-sm opacity-80 hover:opacity-100 transition-opacity shadow-lg">
                                     
-                                    <a href="javascript:void(0)" onclick="document.getElementById('evidence-dropdown').classList.toggle('hidden')" class="inline-flex items-center gap-2 font-mono text-[10px] tracking-widest text-white/60 hover:text-white border-b border-white/20 hover:border-white/80 transition-all pb-1 font-bold">
-                                        [ View Data Evidence ]
+                                    <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block relative group">
+                                        <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto rounded-sm border border-white/20 group-hover:border-white/80 transition-all cursor-pointer shadow-lg group-hover:scale-[1.02] duration-300">
                                     </a>
-                                    <!-- 隐藏的图片下拉框 -->
-                                    <div id="evidence-dropdown" class="hidden mt-6 p-5 glass-panel rounded border border-white/10">
-                                        <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-4 text-center">⬇ CLICK IMAGE TO VIEW</p>
-                                        <div class="grid grid-cols-2 gap-4 items-start">
-                                            <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto rounded-sm opacity-80 hover:opacity-100 transition-opacity shadow-lg">
-                                            <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block relative group">
-                                                <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto rounded-sm border border-white/20 group-hover:border-white/80 transition-all cursor-pointer shadow-lg group-hover:scale-[1.02] duration-300">
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 经历 2 -->
-                        <div class="relative group cursor-default md:ml-12">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2025.08 — 2026.01
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                XINING
-                            </div>
-                            <h2 class="font-sans text-4xl md:text-5xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                FIRST 青年电影展
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">品牌助理实习生</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">全程参与「FIRST惊喜影展」对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p></div>
-                            </div>
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">FIRST 青年电影展</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">品牌助理实习生 | 2025.08 - 2026.01</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">全程参与「FIRST惊喜影展」对接比亚迪、东边野兽、海信等商务需求。深度参与「青年手机电影计划」，在高压环境下确保影视项目与商业权益平稳落地。</p>
                         </div>
 
-                        <!-- 经历 3 -->
-                        <div class="relative group cursor-default">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2021 — 2022
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                GUANGZHOU
-                            </div>
-                            <h2 class="font-sans text-4xl md:text-5xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                SHEIN & 蔚蓝视界
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">HR实习生 ｜ 文案策划</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">处理招聘数据流，优化组织透明度；负责《星汉灿烂》剧集的社媒文案与舆情监测，单平台获赞破 30w+，以数据指导内容运营。</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- 03 / Project Experience -->
-            <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto mt-20 mb-32">
-                <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start" data-reveal>
-                    
-                    <div class="md:col-span-5 flex flex-col justify-start relative">
-                        <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter -ml-4 md:-ml-8 select-none">
-                            03
-                        </span>
-                        <div class="absolute top-12 md:top-24 left-0 font-mono text-[10px] tracking-[0.3em] text-white/60 uppercase">
-                            Chapter — 03 / 03 <br><br>
-                            <span class="text-white/30">Object . Create</span>
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">SHEIN & 蔚蓝视界</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">HR实习生 ｜ 文案策划 | 2021 - 2022</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">处理招聘数据流，优化组织透明度；负责《星汉灿烂》剧集的社媒文案与舆情监测，单平台获赞破 30w+，以数据指导内容运营。</p>
                         </div>
                     </div>
 
-                    <div class="md:col-span-7 flex flex-col gap-32 mt-20 md:mt-12">
+                    <!-- 03 / Project Experience -->
+                    <div class="space-y-16" data-reveal style="--reveal-delay: 0.2">
+                        <div class="font-mono text-xs tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">03 / Project Experience</div>
                         
-                        <div class="relative group cursor-default">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2024.07 — 2024.10
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                SCRIPT
-                            </div>
-                            <h2 class="font-sans text-3xl md:text-5xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                优酷·七猫影业·蟠桃计划
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">IP 改编组</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p></div>
-                            </div>
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">优酷·七猫影业·蟠桃计划</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">IP 改编组 | 2024.07 - 2024.10</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">拆解 18 个影视 IP，分析市场趋势与受众，主导《大宋审死官》的影视化改编方案。在剧本创作中寻找艺术性与商业性的精准平衡点。</p>
                         </div>
 
-                        <div class="relative group cursor-default md:ml-12">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2021.08 — 2021.11
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                AWARD
-                            </div>
-                            <h2 class="font-sans text-3xl md:text-5xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                快看漫画条漫大赛
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">最佳脑洞奖</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">独立结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p></div>
-                            </div>
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">快看漫画条漫大赛</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">最佳脑洞奖 | 2021.08 - 2021.11</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">独立结合虚拟现实设定完成故事大纲，作品荣获“最佳脑洞奖”。导演黎志评价：“VR的虚拟设定契合当下热点，故事类型感鲜明。”</p>
                         </div>
 
-                        <div class="relative group cursor-default">
-                            <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
-                                2022.08 & 2024.10
-                                <span class="h-[1px] w-12 bg-white/20"></span>
-                                VOLUNTEER
-                            </div>
-                            <h2 class="font-sans text-3xl md:text-5xl font-bold tracking-tighter text-white uppercase mb-8 leading-[0.85] group-hover:text-white/70 transition-colors">
-                                北京 / 纽约 国际电影节
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div><p class="font-sans text-sm text-white/90 font-bold tracking-wide">官方志愿者</p></div>
-                                <div><p class="font-sans text-xs text-white/50 leading-relaxed font-bold">先后参与第12届北京国际电影节与第62届纽约电影节。负责红毯嘉宾接待、现场秩序维护及商品团队的统筹协作，在热爱中近距离支持影像艺术。</p></div>
-                            </div>
+                        <!-- 志愿者经历 -->
+                        <div class="group cursor-default">
+                            <h3 class="font-sans text-xl font-medium mb-2 group-hover:text-white/70 transition-colors">北京国际电影节 / 纽约国际电影节</h3>
+                            <p class="font-mono text-xs text-white/50 mb-4 font-bold">官方志愿者 | 2022.08 & 2024.10</p>
+                            <p class="font-sans text-sm text-white/70 leading-relaxed font-bold">先后参与第12届北京国际电影节与第62届纽约电影节。负责红毯嘉宾接待、现场秩序维护及商品团队的统筹协作，在热爱中近距离支持影像艺术。</p>
                         </div>
-
                     </div>
+
                 </div>
             </section>
         </main>
-
         <!-- Footer -->
         <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg mt-20 pointer-events-auto">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
