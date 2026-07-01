@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -91,8 +91,8 @@
 
     <div class="relative z-10 pointer-events-none">
         
-        <!-- Header -->
-        <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
+        <!-- Header (带有毛玻璃半透明背景) -->
+        <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
             <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
                 ENTROPY <br/>
                 <span class="text-white/50 text-xs font-bold">V.2026.06</span>
@@ -102,22 +102,25 @@
             </nav>
         </header>
 
-       <main>
+        <main>
             <!-- Hero 区域 -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
-                <div class="max-w-5xl" data-reveal style="--reveal-delay: 0.5">
-                    <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold uppercase leading-[0.9] mb-8">
-                        XIJIN TENG
+                <div class="max-w-7xl" data-reveal style="--reveal-delay: 0.5">
+                    <!-- 更加炫酷的 XIJIN TENG：镂空描边 + 巨大字号 -->
+                    <h1 class="font-sans text-[6rem] md:text-[10rem] lg:text-[13rem] tracking-tighter font-black uppercase leading-[0.85] mb-8">
+                        <span class="text-transparent" style="-webkit-text-stroke: 2px rgba(255,255,255,0.9);">XIJIN</span><br>
+                        TENG
                     </h1>
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
-                        <p class="font-sans text-base md:text-lg max-w-md leading-relaxed text-white/80 font-bold">
-                            靠谱的INTJ  有感知力的storyteller
+                        <!-- 副标题大幅放大 -->
+                        <p class="font-sans text-xl md:text-3xl max-w-lg leading-relaxed text-white/90 font-bold tracking-wide">
+                            靠谱的INTJ<br>有感知力的storyteller
                         </p>
                         
-                        <a href="#education" class="pointer-events-auto cursor-default group inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold">
+                        <a href="#education" class="pointer-events-auto cursor-default group inline-flex items-center gap-3 font-mono text-sm tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold mb-2">
                             Enter the World
-                            <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </div>
@@ -127,7 +130,7 @@
             <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto mt-20" id="education">
                 <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start" data-reveal>
                     
-                    <!-- 左侧：巨大数字与 Metadata + M.U.S.T 模块 -->
+                    <!-- 左侧 -->
                     <div class="md:col-span-5 flex flex-col justify-start relative">
                         <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter -ml-4 md:-ml-8 select-none block">
                             01
@@ -137,7 +140,6 @@
                             <span class="text-white/30">Object . Mind</span>
                         </div>
 
-                        <!-- 移至左侧的 M.U.S.T 模块 (文字已放大) -->
                         <div class="relative group cursor-default mt-12 md:mt-32">
                             <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
                                 2019 — 2023
@@ -154,9 +156,8 @@
                         </div>
                     </div>
 
-                    <!-- 右侧：NYU 模块 (文字已放大) -->
+                    <!-- 右侧 -->
                     <div class="md:col-span-7 flex flex-col mt-20 md:mt-12">
-                        
                         <div class="relative group cursor-default">
                             <div class="font-mono text-[11px] tracking-widest text-white/40 mb-6 font-bold flex items-center gap-4">
                                 2023 — 2025
@@ -171,18 +172,16 @@
                                 <p class="font-sans text-sm text-white/60 leading-relaxed font-bold max-w-md">主修数字营销、数据库管理、商业分析与数据可视化、战略管理等。以理性的数据分析拆解市场，寻找精准定位。</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
 
-            <!-- 02 & 03 并列网格区域 -->
-            <section class="min-h-screen p-6 md:p-10 py-20 mt-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-7xl mx-auto pointer-events-auto">
+            <!-- 02 / Working Experience (独占一个全屏，只在左侧) -->
+            <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto">
+                <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24" data-reveal>
                     
-                    <!-- ================= 左侧栏：02 / Working Experience ================= -->
-                    <div class="relative w-full" data-reveal>
-                        <!-- 巨大数字 02 背景 -->
+                    <!-- 左侧栏：02 真实内容 -->
+                    <div class="relative w-full">
                         <div class="absolute -top-10 -left-6 md:-top-20 md:-left-12 pointer-events-none z-0">
                             <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter select-none block">
                                 02
@@ -193,7 +192,6 @@
                             </div>
                         </div>
 
-                        <!-- 02 栏内容 (z-10 保证在数字上方) -->
                         <div class="relative z-10 space-y-16 pt-32 md:pt-48">
                             <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">02 / Working Experience</div>
                             
@@ -202,19 +200,16 @@
                                 <p class="font-mono text-sm text-white/50 mb-4 font-bold">新媒体运营 | 看完不说憋得慌｜2026.06 </p>
                                 <p class="font-sans text-base text-white/80 leading-relaxed mb-6 font-bold">负责多渠道（小红书/公众号/微博/抖音）的内容运营与评论维护。任期内高频产出 20 余篇小红书笔记，其中 8 篇赞藏破百，2 篇赞藏破千，有效驱动平台流量与话题转化。</p>
                                 
-                                <!-- 毛玻璃效果按键 -->
                                 <a href="javascript:void(0)" onclick="document.getElementById('evidence-dropdown').classList.toggle('hidden')" class="inline-flex items-center gap-2 font-mono text-xs text-white/90 glass-panel px-4 py-2.5 rounded-lg border border-white/20 hover:bg-white/10 hover:border-white/50 transition-all font-bold shadow-lg">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                     View Data Evidence
                                 </a>
 
-                                <!-- 隐藏的图片下拉框 -->
                                 <div id="evidence-dropdown" class="hidden mt-6 p-5 glass-panel rounded border border-white/10">
                                     <p class="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold mb-4 text-center">⬇ CLICK THE RIGHT IMAGE TO VIEW ON XIAOHONGSHU</p>
                                     
                                     <div class="grid grid-cols-2 gap-4 items-start">
                                         <img src="data1.jpg" alt="Data Proof 1" class="w-full h-auto rounded-sm opacity-80 hover:opacity-100 transition-opacity shadow-lg">
-                                        
                                         <a href="https://www.xiaohongshu.com/discovery/item/6a2d2e44000000000803dbeb?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBDFoOjl8ER5rZY10HuSslamaVZ5bMVHJ6SrQbUMnU6Zw=&author_share=1&xhsshare=WeixinSession&shareRedId=OD81RjxHSEE2NzUyOTgwNjk6OTo3Pj06&apptime=1782464861&share_id=a8b307ecf46d438bb991d4a258b3f037" target="_blank" class="block relative group">
                                             <img src="data2.jpg" alt="Data Proof 2" class="w-full h-auto rounded-sm border border-white/20 group-hover:border-white/80 transition-all cursor-pointer shadow-lg group-hover:scale-[1.02] duration-300">
                                         </a>
@@ -236,9 +231,20 @@
                         </div>
                     </div>
 
-                    <!-- ================= 右侧栏：03 / Project Experience ================= -->
-                    <div class="relative w-full" data-reveal style="--reveal-delay: 0.2">
-                        <!-- 巨大数字 03 背景 -->
+                    <!-- 右侧空置 -->
+                    <div class="hidden md:block"></div>
+                </div>
+            </section>
+
+            <!-- 03 / Project Experience (独占下一个全屏，只在右侧) -->
+            <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto">
+                <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24" data-reveal style="--reveal-delay: 0.2">
+                    
+                    <!-- 左侧空置 -->
+                    <div class="hidden md:block"></div>
+
+                    <!-- 右侧栏：03 真实内容 -->
+                    <div class="relative w-full">
                         <div class="absolute -top-10 -left-6 md:-top-20 md:-left-12 pointer-events-none z-0">
                             <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter select-none block">
                                 03
@@ -249,7 +255,6 @@
                             </div>
                         </div>
 
-                        <!-- 03 栏内容 (z-10 保证在数字上方) -->
                         <div class="relative z-10 space-y-16 pt-32 md:pt-48">
                             <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">03 / Project Experience</div>
                             
@@ -272,13 +277,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         </main>
+
         <!-- Footer -->
-        <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg mt-20 pointer-events-auto">
-            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+        <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg pointer-events-auto">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
                     <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
                     <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">tengxijince@163.com</a>
