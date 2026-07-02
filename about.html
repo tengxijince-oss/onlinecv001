@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,87 +16,40 @@
                 extend: {
                     fontFamily: {
                         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
                     },
                     colors: {
-                        deepspace: '#030308',
-                        neonblue: '#2563EB',
-                        neonpurple: '#7C3AED',
+                        obsidian: '#0A0A0A',
                     }
                 } 
             },
         };
     </script>
-    
+
     <style>
-        body {
-            background-color: #030308;
-            color: rgba(255, 255, 255, 0.9);
-            overflow-x: hidden;
+        /* 视频背景全屏铺满（与首页完全一致） */
+        #video-bg video {
+            position: absolute; 
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%; 
+            min-height: 100%;
+            object-fit: cover;
         }
 
-        /* 纯 CSS 打造的蓝紫流光背景 */
-        .aurora-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: #030308;
-        }
-        
-        .blob {
-            position: absolute;
-            filter: blur(90px);
-            opacity: 0.5;
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-        
-        /* 核心紫色光斑 */
-        .blob-purple {
-            top: -10%; left: -10%;
-            width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(0,0,0,0) 70%);
-            animation-delay: 0s;
-        }
-        
-        /* 深蓝色光斑 */
-        .blob-blue {
-            bottom: -20%; right: -10%;
-            width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, rgba(0,0,0,0) 70%);
-            animation-delay: -5s;
-        }
-        
-        /* 亮蓝色点缀光斑 */
-        .blob-cyan {
-            top: 40%; left: 40%;
-            width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(0,0,0,0) 70%);
-            animation-delay: -10s;
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5%, 10%) scale(1.05); }
-            100% { transform: translate(-5%, 5%) scale(1); }
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* 磨砂玻璃卡片 */
-        .glass-card {
-            background: rgba(15, 15, 25, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(124, 58, 237, 0.3);
-            background: rgba(20, 20, 40, 0.6);
-        }
-
-        /* 原生 CSS 进场动画，摒弃不稳定的外部 JS 库 */
+        /* 原生 CSS 进场动画 */
         .reveal {
             opacity: 0;
             animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -107,139 +60,145 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neonpurple/40">
+<body class="bg-obsidian text-white/90 antialiased selection:bg-white/20">
 
-    <div class="aurora-bg">
-        <div class="blob blob-purple"></div>
-        <div class="blob blob-blue"></div>
-        <div class="blob blob-cyan"></div>
+    <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
+        <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
+        <video id="about-video" autoplay loop muted playsinline preload="auto" class="z-0">
+            <source src="bg.mp4" type="video/mp4" />
+        </video>
     </div>
 
-    <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/40 backdrop-blur-md border-b border-white/5">
-        <a href="index.html" class="font-mono text-sm tracking-widest font-medium uppercase hover:text-white/70 transition-colors">
-            ENTROPY <span class="text-white/30 text-[10px] ml-1">HOME</span>
-        </a>
-        <nav class="font-mono text-xs tracking-wider uppercase font-bold text-white/50">
-            AIGC TOOLKIT . MAP
-        </nav>
-    </header>
-
-    <main class="pt-32 pb-20 px-6 md:px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+    <div class="relative z-10 pointer-events-none">
         
-        <div class="mb-20 reveal" style="animation-delay: 0.1s;">
-            <div class="font-mono text-[10px] tracking-[0.3em] text-white/40 uppercase mb-6">
-                Identity & Mindset
-            </div>
-            <h1 class="font-sans text-3xl md:text-5xl font-bold tracking-tight leading-snug mb-4">
-                靠谱的 INTJ <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">有感知力的 storyteller.</span>
-            </h1>
-            <p class="font-mono text-xs md:text-sm text-white/40 max-w-xl leading-relaxed mt-6">
-                Navigating the intersection of narrative and technology. Below is a map of the AI ecosystem I utilize to construct worlds, analyze data, and streamline workflows.
-            </p>
-        </div>
+        <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
+            <a href="index.html" class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto leading-tight hover:text-white/70 transition-colors">
+                ENTROPY <br/>
+                <span class="text-white/50 text-[10px] font-bold">BACK HOME ←</span>
+            </a>
+            <nav class="font-mono text-xs tracking-wider uppercase font-bold text-white/50">
+                AIGC TOOLKIT . MAP
+            </nav>
+        </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <main class="pt-32 pb-32 px-6 md:px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
             
-            <div class="glass-card p-8 rounded-2xl md:col-span-2 flex flex-col justify-between reveal" style="animation-delay: 0.3s;">
+            <div class="mb-32 reveal mt-12" style="animation-delay: 0.1s;">
+                <div class="font-mono text-[10px] tracking-[0.3em] text-white/40 uppercase mb-6">
+                    Identity & Mindset
+                </div>
+                <h1 class="font-sans text-xl md:text-3xl max-w-2xl leading-relaxed text-white/90 font-bold tracking-wide">
+                    靠谱的 INTJ <br>
+                    有感知力的 storyteller.
+                </h1>
+                <p class="font-mono text-xs text-white/40 max-w-md leading-relaxed mt-6">
+                    以理性的技术架构支撑感性的故事表达。以下是我在创作、工作与系统探索中所调用的 AIGC 生态版图。
+                </p>
+            </div>
+
+            <section class="relative w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-32">
+                    
+                    <div class="relative w-full reveal" style="animation-delay: 0.3s;">
+                        <div class="absolute -top-20 -left-6 md:-top-32 md:-left-12 pointer-events-none z-0">
+                            <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter select-none block">
+                                04
+                            </span>
+                            <div class="absolute top-12 md:top-24 left-4 md:left-8 font-mono text-[10px] tracking-[0.3em] text-white/60 uppercase">
+                                Chapter — 04 / 04 <br><br>
+                                <span class="text-white/30">System . Synthesis</span>
+                            </div>
+                        </div>
+
+                        <div class="relative z-10 space-y-20 pt-32 md:pt-48 pointer-events-auto">
+                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-A / Core Logic & Workspace</div>
+                            
+                            <div class="group cursor-default">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
+                                    CORE LOGIC
+                                    <span class="h-[1px] w-12 bg-white/20"></span>
+                                    长期付费驱动
+                                </div>
+                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
+                                    ChatGPT & Gemini & Claude
+                                </h3>
+                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
+                                    主力文本与逻辑交互引擎。其中 ChatGPT 与 Gemini 保持长期付费订阅状态，用于高强度日常剧本架构、文案打磨与商业逻辑推演。
+                                </p>
+                            </div>
+
+                            <div class="group cursor-default">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
+                                    WORKSPACE APPLICATION
+                                    <span class="h-[1px] w-12 bg-white/20"></span>
+                                    仅在以往工作中使用
+                                </div>
+                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
+                                    DeepSeek / 元宝 / 千问 / 豆包
+                                </h3>
+                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold mb-4">
+                                    针对特定工作流的效能工具。在实际业务中表现出明显的长板分化：
+                                </p>
+                                <div class="space-y-2 border-l border-white/10 pl-4 font-sans text-sm text-white/40 leading-relaxed">
+                                    <p><strong class="text-white/60 font-bold">元宝 & DeepSeek：</strong> 深度搜索与专业学术/行业信息抓取能力极强。</p>
+                                    <p><strong class="text-white/60 font-bold">通义千问 & 豆包：</strong> 在高频、快速的社媒营销文案撰写中产出更符合直觉。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative w-full reveal pt-20 md:pt-48" style="animation-delay: 0.5s;">
+                        <div class="relative z-10 space-y-20 pointer-events-auto">
+                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-B / Visual & Next Frontier</div>
+                            
+                            <div class="group cursor-default">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
+                                    VISUAL & VIDEO GENERATION
+                                    <span class="h-[1px] w-12 bg-white/20"></span>
+                                    创意流渲染
+                                </div>
+                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
+                                    Midjourney / Runway / Luma / 可灵
+                                </h3>
+                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
+                                    影视概念及动态影像的生成基底。其中快手可灵保持付费状态以确保高画质渲染；即梦（Jimeng）与 Happy Hourse 保持轻度试用追踪。
+                                </p>
+                            </div>
+
+                            <div class="group cursor-default">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
+                                    NEXT FRONTIER
+                                    <span class="h-[1px] w-12 bg-white/20"></span>
+                                    系统扩充储备
+                                </div>
+                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
+                                    Kimi / Codex / Google Flow
+                                </h3>
+                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
+                                    即将深入探索的下一代底层。通过结合更长文本的上下文处理（Kimi）、自动化工作流（Google Flow）与 GitHub 协同，构建更具独立性的个人创作工作站。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="p-6 md:p-10 border-t border-white/10 bg-black/60 backdrop-blur-lg pointer-events-auto">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <div>
-                    <div class="font-mono text-[10px] tracking-widest text-neonpurple uppercase font-bold mb-6 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-neonpurple animate-pulse"></span>
-                        Core Engine / 核心驱动
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
-                            Gemini <span class="font-mono text-[9px] text-neonpurple bg-neonpurple/10 px-2 py-0.5 rounded">LONG-TERM PAID</span>
-                        </div>
-                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
-                            Claude
-                        </div>
-                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
-                            ChatGPT <span class="font-mono text-[9px] text-neonpurple bg-neonpurple/10 px-2 py-0.5 rounded">LONG-TERM PAID</span>
-                        </div>
-                    </div>
+                    <h2 class="font-sans text-2xl font-medium mb-6">Let's build new realities.</h2>
+                    <a href="mailto:contact@xijin.space" class="font-mono text-sm hover:opacity-70 transition-opacity font-bold">tengxijince@163.com</a>
                 </div>
-                <p class="font-mono text-xs text-white/30 mt-8">Primary interfaces for reasoning, narrative structuring, and logic validation.</p>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl flex flex-col justify-between reveal" style="animation-delay: 0.4s;">
-                <div>
-                    <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold mb-6">
-                        Exploring / 准备探索
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div class="text-lg font-sans font-bold text-white/80">Kimi</div>
-                        <div class="text-lg font-sans font-bold text-white/80">Codex</div>
-                    </div>
-                </div>
-                <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mt-8"></div>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl md:col-span-1 reveal" style="animation-delay: 0.5s;">
-                <div class="font-mono text-[10px] tracking-widest text-neonblue uppercase font-bold mb-6">
-                    Workspace / 工作台应用
-                </div>
-                <div class="space-y-6">
-                    <div>
-                        <p class="font-mono text-[9px] text-white/40 mb-2">信息检索｜INFORMATION SEARCH</p>
-                        <div class="flex gap-2">
-                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">元宝</span>
-                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">DeepSeek</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[9px] text-white/40 mb-2">文案对话｜COPYWRITING</p>
-                        <div class="flex gap-2">
-                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">千问</span>
-                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">豆包</span>
-                        </div>
-                    </div>
+                <div class="font-mono text-xs text-white/40 font-bold">
+                    &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.<br/>
+                    NEW YORK / MACAU CHINA
                 </div>
             </div>
+        </footer>
 
-            <div class="glass-card p-8 rounded-2xl md:col-span-2 reveal" style="animation-delay: 0.6s;">
-                <div class="font-mono text-[10px] tracking-widest text-white/60 uppercase font-bold mb-6">
-                    Visual & Video / 视觉与影像生成
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-bold">可灵 (Kling)</span>
-                            <span class="font-mono text-[9px] text-neonpurple border border-neonpurple/30 px-1.5 rounded">PAID</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-bold text-white/70">即梦 (Jimeng)</span>
-                            <span class="font-mono text-[9px] text-white/30 border border-white/10 px-1.5 rounded">TRIAL</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-bold text-white/70">Happy Hourse</span>
-                            <span class="font-mono text-[9px] text-white/30 border border-white/10 px-1.5 rounded">TRIAL</span>
-                        </div>
-                    </div>
-                    <div class="space-y-3 border-l border-white/5 pl-4">
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-bold text-white/80">Midjourney</span
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl md:col-span-3 flex justify-between items-center reveal" style="animation-delay: 0.7s;">
-                <div class="flex items-center gap-8">
-                    <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold">
-                        Systems & Workflows
-                    </div>
-                    <div class="flex gap-4">
-                        <span class="text-sm font-bold text-white/80 tracking-wide">Google Flow</span>
-                        <span class="text-white/20">/</span>
-                        <span class="text-sm font-bold text-white/80 tracking-wide">GitHub</span>
-                    </div>
-                </div>
-                <div class="w-2 h-2 rounded-full bg-white/20"></div>
-            </div>
-
-        </div>
-    </main>
+    </div>
 
 </body>
 </html>
