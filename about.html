@@ -27,7 +27,7 @@
     </script>
 
     <style>
-        /* 视频背景全屏铺满（与首页完全一致） */
+        /* 视频背景全屏铺满 */
         #video-bg video {
             position: absolute; 
             top: 50%; 
@@ -64,14 +64,14 @@
 
     <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian">
         <div class="absolute inset-0 bg-black/40 z-10 mix-blend-multiply pointer-events-none"></div>
-        <video id="about-video" autoplay loop muted playsinline preload="auto" class="z-0">
-            <source src="bg.mp4" type="video/mp4" />
+        <video id="about-video" autoplay loop muted playsinline class="z-0">
+            <source src="aboutbg.mp4" type="video/mp4" />
         </video>
     </div>
 
     <div class="relative z-10 pointer-events-none">
         
-        <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
+        <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/60 backdrop-blur-lg border-b border-b-white/10">
             <a href="index.html" class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto leading-tight hover:text-white/70 transition-colors">
                 ENTROPY <br/>
                 <span class="text-white/50 text-[10px] font-bold">BACK HOME ←</span>
@@ -83,7 +83,7 @@
 
         <main class="pt-32 pb-32 px-6 md:px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
             
-            <div class="mb-32 reveal mt-12" style="animation-delay: 0.1s;">
+            <div class="mb-24 reveal mt-12" style="animation-delay: 0.1s;">
                 <div class="font-mono text-[10px] tracking-[0.3em] text-white/40 uppercase mb-6">
                     Identity & Mindset
                 </div>
@@ -91,9 +91,6 @@
                     靠谱的 INTJ <br>
                     有感知力的 storyteller.
                 </h1>
-                <p class="font-mono text-xs text-white/40 max-w-md leading-relaxed mt-6">
-                    以理性的技术架构支撑感性的故事表达。以下是我在创作、工作与系统探索中所调用的 AIGC 生态版图。
-                </p>
             </div>
 
             <section class="relative w-full">
@@ -110,73 +107,103 @@
                             </div>
                         </div>
 
-                        <div class="relative z-10 space-y-20 pt-32 md:pt-48 pointer-events-auto">
-                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-A / Core Logic & Workspace</div>
+                        <div class="relative z-10 space-y-16 pt-32 md:pt-48 pointer-events-auto">
+                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-A / Daily & Creative Stack</div>
                             
-                            <div class="group cursor-default">
-                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
-                                    CORE LOGIC
+                            <div class="group cursor-default space-y-4">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 font-bold flex items-center gap-4">
+                                    CORE MODELS
                                     <span class="h-[1px] w-12 bg-white/20"></span>
-                                    长期付费驱动
+                                    主力模型
                                 </div>
-                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
-                                    ChatGPT & Gemini & Claude
-                                </h3>
-                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
-                                    主力文本与逻辑交互引擎。其中 ChatGPT 与 Gemini 保持长期付费订阅状态，用于高强度日常剧本架构、文案打磨与商业逻辑推演。
-                                </p>
+                                <div class="space-y-3 max-w-md">
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">ChatGPT</span>
+                                        <span class="font-mono text-[10px] text-white/40 tracking-wider">[ 长期付费 ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Gemini</span>
+                                        <span class="font-mono text-[10px] text-white/40 tracking-wider">[ 长期付费 ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Claude</span>
+                                        <span class="font-mono text-[10px] text-white/20 tracking-wider">[ 常用 ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Google Flow</span>
+                                        <span class="font-mono text-[10px] text-white/20 tracking-wider">[ 常用 ]</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="group cursor-default">
-                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
-                                    WORKSPACE APPLICATION
+                            <div class="group cursor-default space-y-4">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 font-bold flex items-center gap-4">
+                                    VISUAL PRODUCTION
                                     <span class="h-[1px] w-12 bg-white/20"></span>
-                                    仅在以往工作中使用
+                                    影像生成
                                 </div>
-                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
-                                    DeepSeek / 元宝 / 千问 / 豆包
-                                </h3>
-                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold mb-4">
-                                    针对特定工作流的效能工具。在实际业务中表现出明显的长板分化：
-                                </p>
-                                <div class="space-y-2 border-l border-white/10 pl-4 font-sans text-sm text-white/40 leading-relaxed">
-                                    <p><strong class="text-white/60 font-bold">元宝 & DeepSeek：</strong> 深度搜索与专业学术/行业信息抓取能力极强。</p>
-                                    <p><strong class="text-white/60 font-bold">通义千问 & 豆包：</strong> 在高频、快速的社媒营销文案撰写中产出更符合直觉。</p>
+                                <div class="space-y-3 max-w-md">
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">可灵</span>
+                                        <span class="font-mono text-[10px] text-white/40 tracking-wider">[ 付费 ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">即梦</span>
+                                        <span class="font-mono text-[10px] text-white/30 tracking-wider">[ 试用 ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Happy Hourse</span>
+                                        <span class="font-mono text-[10px] text-white/30 tracking-wider">[ 试用 ]</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="relative w-full reveal pt-20 md:pt-48" style="animation-delay: 0.5s;">
-                        <div class="relative z-10 space-y-20 pointer-events-auto">
-                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-B / Visual & Next Frontier</div>
+                        <div class="relative z-10 space-y-16 pointer-events-auto">
+                            <div class="font-mono text-sm tracking-widest text-white/40 uppercase mb-8 border-b border-white/10 pb-4 font-bold">04-B / Workspace & Exploration</div>
                             
-                            <div class="group cursor-default">
-                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
-                                    VISUAL & VIDEO GENERATION
+                            <div class="group cursor-default space-y-4">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 font-bold flex items-center gap-4">
+                                    PREVIOUS WORKSPACE
                                     <span class="h-[1px] w-12 bg-white/20"></span>
-                                    创意流渲染
+                                    以往工作使用
                                 </div>
-                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
-                                    Midjourney / Runway / Luma / 可灵
-                                </h3>
-                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
-                                    影视概念及动态影像的生成基底。其中快手可灵保持付费状态以确保高画质渲染；即梦（Jimeng）与 Happy Hourse 保持轻度试用追踪。
-                                </p>
+                                <div class="space-y-4 max-w-md">
+                                    <div class="border-b border-white/5 pb-3">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <span class="font-sans text-base font-bold text-white">元宝 / DeepSeek</span>
+                                            <span class="font-mono text-[10px] text-white/40 tracking-wider">[ 工作使用 ]</span>
+                                        </div>
+                                        <p class="font-sans text-xs text-white/40 font-bold">搜索与信息抓取能力相对较强</p>
+                                    </div>
+                                    <div class="border-b border-white/5 pb-3">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <span class="font-sans text-base font-bold text-white">通义千问 / 豆包</span>
+                                            <span class="font-mono text-[10px] text-white/40 tracking-wider">[ 工作使用 ]</span>
+                                        </div>
+                                        <p class="font-sans text-xs text-white/40 font-bold">文案写作能力相对较强</p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="group cursor-default">
-                                <div class="font-mono text-[11px] tracking-widest text-white/40 mb-4 font-bold flex items-center gap-4">
-                                    NEXT FRONTIER
+                            <div class="group cursor-default space-y-4">
+                                <div class="font-mono text-[11px] tracking-widest text-white/40 font-bold flex items-center gap-4">
+                                    FUTURE EXPLORATION
                                     <span class="h-[1px] w-12 bg-white/20"></span>
-                                    系统扩充储备
+                                    准备探索
                                 </div>
-                                <h3 class="font-sans text-2xl font-bold tracking-tight text-white uppercase mb-4 leading-none group-hover:text-white/70 transition-colors">
-                                    Kimi / Codex / Google Flow
-                                </h3>
-                                <p class="font-sans text-base text-white/60 leading-relaxed font-bold">
-                                    即将深入探索的下一代底层。通过结合更长文本的上下文处理（Kimi）、自动化工作流（Google Flow）与 GitHub 协同，构建更具独立性的个人创作工作站。
-                                </p>
+                                <div class="space-y-3 max-w-md">
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Kimi</span>
+                                        <span class="font-mono text-[10px] text-white/30 tracking-wider">[ RESERVED ]</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                        <span class="font-sans text-base font-bold text-white">Codex</span>
+                                        <span class="font-mono text-[10px] text-white/30 tracking-wider">[ RESERVED ]</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -200,5 +227,17 @@
 
     </div>
 
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '-50px' });
+        
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    </script>
 </body>
 </html>
