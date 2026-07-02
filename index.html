@@ -91,11 +91,11 @@
 
     <div class="relative z-10 pointer-events-none">
         
-        <!-- Header (带有毛玻璃半透明背景) -->
-        <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
-            <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
+        <!-- Header (调整了 py-4，让上下边距变窄，紧贴文字) -->
+        <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
+            <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto leading-tight">
                 ENTROPY <br/>
-                <span class="text-white/50 text-xs font-bold">V.2026.06</span>
+                <span class="text-white/50 text-[10px] font-bold">V.2026.06</span>
             </div>
             <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex font-bold">
                 <a href="about.html" class="hover:text-white/50 transition-colors">ABOUT ME</a>
@@ -106,13 +106,12 @@
             <!-- Hero 区域 -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
                 <div class="max-w-7xl" data-reveal style="--reveal-delay: 0.5">
-                    <!-- 恢复为原版 font-mono 字体，保留了巨大的字号 -->
-                    <h1 class="font-mono text-[4rem] md:text-[7rem] lg:text-[10rem] tracking-tighter font-bold uppercase leading-[0.9] mb-8">
+                    <!-- 字号缩减到 6xl 到 7rem 的黄金区间，完美匹配红框 -->
+                    <h1 class="font-mono text-6xl md:text-8xl lg:text-[7rem] tracking-tighter font-bold uppercase leading-[0.9] mb-8 mt-12">
                         XIJIN TENG
                     </h1>
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
-                        <!-- 副标题大幅放大 -->
                         <p class="font-sans text-xl md:text-3xl max-w-lg leading-relaxed text-white/90 font-bold tracking-wide">
                             靠谱的INTJ<br>有感知力的storyteller
                         </p>
