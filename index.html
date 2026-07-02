@@ -58,31 +58,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 全新：模拟 3D 偏光玻璃的文字特效 */
-        .glass-text {
-            background: linear-gradient(
-                135deg, 
-                rgba(255, 255, 255, 1) 0%, 
-                rgba(118, 139, 230, 0.8) 25%, 
-                rgba(255, 141, 179, 0.8) 50%, 
-                rgba(70, 227, 183, 0.8) 75%, 
-                rgba(255, 255, 255, 1) 100%
-            );
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7);
-            filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.6));
-            animation: shine 6s linear infinite;
-        }
-        
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
+        /* 给 HTML 增加平滑滚动效果 */
         html {
             scroll-behavior: smooth;
         }
@@ -115,11 +91,11 @@
 
     <div class="relative z-10 pointer-events-none">
         
-        <!-- Header (内边距 py-3 px-6 变得更窄) -->
-        <header class="fixed top-0 left-0 right-0 py-3 px-6 md:py-4 md:px-10 flex justify-between items-center z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
-            <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto leading-tight">
+        <!-- Header (带有毛玻璃半透明背景) -->
+        <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-40 bg-black/60 backdrop-blur-lg border-b border-white/10">
+            <div class="font-mono text-sm tracking-widest font-medium uppercase pointer-events-auto">
                 ENTROPY <br/>
-                <span class="text-white/50 text-[10px] font-bold">V.2026.06</span>
+                <span class="text-white/50 text-xs font-bold">V.2026.06</span>
             </div>
             <nav class="flex gap-6 font-mono text-xs tracking-wider pointer-events-auto uppercase hidden md:flex font-bold">
                 <a href="about.html" class="hover:text-white/50 transition-colors">ABOUT ME</a>
@@ -129,17 +105,16 @@
         <main>
             <!-- Hero 区域 -->
             <section class="h-[100svh] flex flex-col justify-end p-6 md:p-10 pb-20">
-                <div class="max-w-7xl w-full" data-reveal style="--reveal-delay: 0.5">
-                    
-                    <!-- 单行、玻璃材质的主标题 -->
-                    <h1 class="font-sans text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9.5rem] tracking-tighter font-black uppercase leading-[0.9] mb-8 glass-text whitespace-nowrap">
+                <div class="max-w-7xl" data-reveal style="--reveal-delay: 0.5">
+                    <!-- 恢复为原版 font-mono 字体，保留了巨大的字号 -->
+                    <h1 class="font-mono text-[4rem] md:text-[7rem] lg:text-[10rem] tracking-tighter font-bold uppercase leading-[0.9] mb-8">
                         XIJIN TENG
                     </h1>
                     
                     <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
-                        <!-- 副标题恢复单行 -->
-                        <p class="font-sans text-xl md:text-3xl max-w-2xl leading-relaxed text-white/90 font-bold tracking-wide">
-                            靠谱的INTJ &nbsp;&nbsp;有感知力的storyteller
+                        <!-- 副标题大幅放大 -->
+                        <p class="font-sans text-xl md:text-3xl max-w-lg leading-relaxed text-white/90 font-bold tracking-wide">
+                            靠谱的INTJ<br>有感知力的storyteller
                         </p>
                         
                         <a href="#education" class="pointer-events-auto cursor-default group inline-flex items-center gap-3 font-mono text-sm tracking-widest uppercase pb-2 border-b border-white/20 hover:border-white/80 transition-colors font-bold mb-2">
@@ -200,10 +175,11 @@
                 </div>
             </section>
 
-            <!-- 02 / Working Experience (左侧) -->
+            <!-- 02 / Working Experience (独占一个全屏，只在左侧) -->
             <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto">
                 <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24" data-reveal>
                     
+                    <!-- 左侧栏：02 真实内容 -->
                     <div class="relative w-full">
                         <div class="absolute -top-10 -left-6 md:-top-20 md:-left-12 pointer-events-none z-0">
                             <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter select-none block">
@@ -254,16 +230,19 @@
                         </div>
                     </div>
 
+                    <!-- 右侧空置 -->
                     <div class="hidden md:block"></div>
                 </div>
             </section>
 
-            <!-- 03 / Project Experience (右侧) -->
+            <!-- 03 / Project Experience (独占下一个全屏，只在右侧) -->
             <section class="min-h-screen relative flex items-center p-6 md:p-10 pointer-events-auto">
                 <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24" data-reveal style="--reveal-delay: 0.2">
                     
+                    <!-- 左侧空置 -->
                     <div class="hidden md:block"></div>
 
+                    <!-- 右侧栏：03 真实内容 -->
                     <div class="relative w-full">
                         <div class="absolute -top-10 -left-6 md:-top-20 md:-left-12 pointer-events-none z-0">
                             <span class="font-sans text-[8rem] md:text-[14rem] text-white/5 font-bold leading-none tracking-tighter select-none block">
@@ -317,8 +296,9 @@
 
     </div>
 
+    <!-- 所有的 JavaScript -->
     <script>
-        // 视频加载与滚动驱动逻辑
+        // 1. 视频加载与滚动驱动逻辑
         const VIDEO_URL = 'bg.mp4'; 
         const video = document.getElementById('hero-video');
         let isLoaded = false;
@@ -336,6 +316,7 @@
             video.load();
             setTimeout(handleLoaded, 3000); 
             
+            // 视频跟随滚动条播放
             window.addEventListener('scroll', () => {
                 if (!isLoaded || !video || !video.duration || video.seeking) return;
                 const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
@@ -344,7 +325,7 @@
             }, { passive: true });
         }
 
-        // IntersectionObserver 元素上浮展现
+        // 2. IntersectionObserver 元素上浮展现
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
