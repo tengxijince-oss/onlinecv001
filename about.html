@@ -28,8 +28,6 @@
         };
     </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
-
     <style>
         body {
             background-color: #030308;
@@ -98,22 +96,25 @@
             background: rgba(20, 20, 40, 0.6);
         }
 
-        [data-reveal] {
+        /* 原生 CSS 进场动画，摒弃不稳定的外部 JS 库 */
+        .reveal {
             opacity: 0;
-            transform: translateY(20px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="antialiased selection:bg-neonpurple/40">
 
-    <!-- 蓝紫动态流光背景 -->
     <div class="aurora-bg">
         <div class="blob blob-purple"></div>
         <div class="blob blob-blue"></div>
         <div class="blob blob-cyan"></div>
     </div>
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/40 backdrop-blur-md border-b border-white/5">
         <a href="index.html" class="font-mono text-sm tracking-widest font-medium uppercase hover:text-white/70 transition-colors">
             ENTROPY <span class="text-white/30 text-[10px] ml-1">HOME</span>
@@ -125,8 +126,7 @@
 
     <main class="pt-32 pb-20 px-6 md:px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
         
-        <!-- Slogan 区域 (克制且高级) -->
-        <div class="mb-20" data-reveal>
+        <div class="mb-20 reveal" style="animation-delay: 0.1s;">
             <div class="font-mono text-[10px] tracking-[0.3em] text-white/40 uppercase mb-6">
                 Identity & Mindset
             </div>
@@ -139,11 +139,9 @@
             </p>
         </div>
 
-        <!-- AIGC 工具栈图谱 (Bento Grid) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal style="--reveal-delay: 0.2;">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <!-- 核心大模型 (Core Logic) -->
-            <div class="glass-card p-8 rounded-2xl md:col-span-2 flex flex-col justify-between">
+            <div class="glass-card p-8 rounded-2xl md:col-span-2 flex flex-col justify-between reveal" style="animation-delay: 0.3s;">
                 <div>
                     <div class="font-mono text-[10px] tracking-widest text-neonpurple uppercase font-bold mb-6 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-neonpurple animate-pulse"></span>
@@ -164,8 +162,7 @@
                 <p class="font-mono text-xs text-white/30 mt-8">Primary interfaces for reasoning, narrative structuring, and logic validation.</p>
             </div>
 
-            <!-- 探索与未来 (Next Frontier) -->
-            <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+            <div class="glass-card p-8 rounded-2xl flex flex-col justify-between reveal" style="animation-delay: 0.4s;">
                 <div>
                     <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold mb-6">
                         Exploring / 准备探索
@@ -178,8 +175,7 @@
                 <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mt-8"></div>
             </div>
 
-            <!-- 工作效能 (Work & Productivity) -->
-            <div class="glass-card p-8 rounded-2xl md:col-span-1">
+            <div class="glass-card p-8 rounded-2xl md:col-span-1 reveal" style="animation-delay: 0.5s;">
                 <div class="font-mono text-[10px] tracking-widest text-neonblue uppercase font-bold mb-6">
                     Workspace / 工作台应用
                 </div>
@@ -201,8 +197,7 @@
                 </div>
             </div>
 
-            <!-- 视觉与视频流 (Visual & Video Generation) -->
-            <div class="glass-card p-8 rounded-2xl md:col-span-2">
+            <div class="glass-card p-8 rounded-2xl md:col-span-2 reveal" style="animation-delay: 0.6s;">
                 <div class="font-mono text-[10px] tracking-widest text-white/60 uppercase font-bold mb-6">
                     Visual & Video / 视觉与影像生成
                 </div>
@@ -235,8 +230,7 @@
                 </div>
             </div>
 
-            <!-- 工作流与代码 (Workflow) -->
-            <div class="glass-card p-6 rounded-2xl md:col-span-3 flex justify-between items-center">
+            <div class="glass-card p-6 rounded-2xl md:col-span-3 flex justify-between items-center reveal" style="animation-delay: 0.7s;">
                 <div class="flex items-center gap-8">
                     <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold">
                         Systems & Workflows
@@ -253,17 +247,5 @@
         </div>
     </main>
 
-    <script>
-        // GSAP 进场动画
-        document.addEventListener("DOMContentLoaded", (event) => {
-            gsap.to("[data-reveal]", {
-                y: 0,
-                opacity: 1,
-                duration: 1.2,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
-        });
-    </script>
 </body>
 </html>
