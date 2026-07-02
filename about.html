@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me | Xijin Teng</title>
+    <title>About | Xijin Teng</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,234 +16,254 @@
                 extend: {
                     fontFamily: {
                         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
                     },
                     colors: {
-                        obsidian: '#0A0A0A',
+                        deepspace: '#030308',
+                        neonblue: '#2563EB',
+                        neonpurple: '#7C3AED',
                     }
                 } 
             },
         };
     </script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+
     <style>
+        body {
+            background-color: #030308;
+            color: rgba(255, 255, 255, 0.9);
+            overflow-x: hidden;
+        }
+
+        /* 纯 CSS 打造的蓝紫流光背景 */
+        .aurora-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: #030308;
+        }
+        
+        .blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.5;
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        
+        /* 核心紫色光斑 */
+        .blob-purple {
+            top: -10%; left: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(0,0,0,0) 70%);
+            animation-delay: 0s;
+        }
+        
+        /* 深蓝色光斑 */
+        .blob-blue {
+            bottom: -20%; right: -10%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, rgba(0,0,0,0) 70%);
+            animation-delay: -5s;
+        }
+        
+        /* 亮蓝色点缀光斑 */
+        .blob-cyan {
+            top: 40%; left: 40%;
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(0,0,0,0) 70%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 10%) scale(1.05); }
+            100% { transform: translate(-5%, 5%) scale(1); }
+        }
+
+        /* 磨砂玻璃卡片 */
+        .glass-card {
+            background: rgba(15, 15, 25, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.3);
+            background: rgba(20, 20, 40, 0.6);
+        }
+
         [data-reveal] {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            transition-delay: calc(var(--reveal-delay, 0) * 1s);
-        }
-        [data-reveal="visible"] { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-        .glass-panel {
-            background: rgba(10, 10, 10, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                radial-gradient(ellipse at 15% 40%, rgba(255,255,255,0.025) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 15%, rgba(255,255,255,0.018) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        html { scroll-behavior: smooth; }
-        .tool-tag {
-            display: inline-block;
-            padding: 4px 14px;
-            border: 1px solid rgba(255,255,255,0.15);
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            color: rgba(255,255,255,0.45);
-            transition: all 0.2s ease;
-        }
-        .tool-tag:hover {
-            border-color: rgba(255,255,255,0.6);
-            color: rgba(255,255,255,0.9);
+            transform: translateY(20px);
         }
     </style>
 </head>
-<body class="bg-obsidian text-white/90 antialiased selection:bg-white/20 relative">
+<body class="antialiased selection:bg-neonpurple/40">
 
-    <!-- Fixed Header -->
-    <header class="fixed top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
-        <a href="index.html" class="font-mono text-sm tracking-widest font-bold uppercase hover:text-white/40 transition-colors flex items-center gap-2">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            ENTROPY
+    <!-- 蓝紫动态流光背景 -->
+    <div class="aurora-bg">
+        <div class="blob blob-purple"></div>
+        <div class="blob blob-blue"></div>
+        <div class="blob blob-cyan"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-40 bg-black/40 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="font-mono text-sm tracking-widest font-medium uppercase hover:text-white/70 transition-colors">
+            ENTROPY <span class="text-white/30 text-[10px] ml-1">HOME</span>
         </a>
-        <div class="font-mono text-xs tracking-widest text-white/25 font-bold uppercase hidden md:block">
-            ABOUT ME
-        </div>
+        <nav class="font-mono text-xs tracking-wider uppercase font-bold text-white/50">
+            AIGC TOOLKIT . MAP
+        </nav>
     </header>
 
-    <main class="relative z-10 pt-36 pb-20">
-
-        <!-- Hero -->
-        <section class="px-6 md:px-10 mb-28" data-reveal>
-            <div class="max-w-4xl mx-auto">
-                <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-8 font-bold">XIJIN TENG / ABOUT ME</p>
-                <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase leading-[0.88] mb-10">
-                    靠谱的INTJ<br/>有感知力的<br/>STORYTELLER
-                </h1>
-                <div class="w-12 h-px bg-white/20 mb-8"></div>
-                <p class="font-sans text-base md:text-lg text-white/45 max-w-lg leading-relaxed font-medium">
-                    这里写什么呢？
-                </p>
+    <main class="pt-32 pb-20 px-6 md:px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+        
+        <!-- Slogan 区域 (克制且高级) -->
+        <div class="mb-20" data-reveal>
+            <div class="font-mono text-[10px] tracking-[0.3em] text-white/40 uppercase mb-6">
+                Identity & Mindset
             </div>
-        </section>
+            <h1 class="font-sans text-3xl md:text-5xl font-bold tracking-tight leading-snug mb-4">
+                靠谱的 INTJ <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">有感知力的 storyteller.</span>
+            </h1>
+            <p class="font-mono text-xs md:text-sm text-white/40 max-w-xl leading-relaxed mt-6">
+                Navigating the intersection of narrative and technology. Below is a map of the AI ecosystem I utilize to construct worlds, analyze data, and streamline workflows.
+            </p>
+        </div>
 
-        <!-- 01 / Origin -->
-        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
+        <!-- AIGC 工具栈图谱 (Bento Grid) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal style="--reveal-delay: 0.2;">
+            
+            <!-- 核心大模型 (Core Logic) -->
+            <div class="glass-card p-8 rounded-2xl md:col-span-2 flex flex-col justify-between">
                 <div>
-                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">01 / Origin</p>
-                </div>
-                <div class="space-y-5">
-                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">AI相关</h2>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        使用过：chatGPT(付费) Gemini（付费） Claude（接API）Kling（视频制作） Deepseek 豆包 千问 元宝（工作常用）
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        这里写什么呢？<span class="text-white/90 font-semibold">占位写什么呢</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 02 / Observation -->
-        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
-                <div>
-                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">02 / Observation</p>
-                </div>
-                <div class="space-y-5">
-                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">我观察到了什么</h2>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        乙女游戏的情感设计有一个结构性悖论。
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        男主角是基于用户画像均值创造出来的——他本质上是一个商品，被设计成让尽可能多的人觉得"他是为我量身定制的"。但量身定制和批量生产在定义上互斥。
-                    </p>
-
-                    <!-- Pull quote -->
-                    <div class="glass-panel p-6 md:p-8 my-8">
-                        <p class="font-sans text-base md:text-lg text-white/80 leading-relaxed font-medium">
-                            "如果说乙游还是在卖故事和造梦，AI 情感陪伴是一个会融入日常生活的长期陪伴——它没有需要妥协的固定人设。只有自己会忠于自己。"
-                        </p>
+                    <div class="font-mono text-[10px] tracking-widest text-neonpurple uppercase font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-neonpurple animate-pulse"></span>
+                        Core Engine / 核心驱动
                     </div>
-
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        这个矛盾在乙游里无解，因为内容是固定交付的。你消费的是一个预设好的故事，不是一段真正属于你的关系。所以"被背刺"的风险始终存在——游戏公司的决策和你的喜好之间。
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        AI 情感陪伴的逻辑是反过来的。它不是让你去适应一个预设人物，而是持续适应你。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 03 / Validation -->
-        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
-                <div>
-                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">03 / Validation</p>
-                </div>
-                <div class="space-y-5">
-                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">vibe coding尝试 </h2>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        我做了一个叫「情绪焚烧炉」的小工具。粒子火焰动画 + Claude API 驱动，你把情绪扔进去，它帮你烧掉。不需要整理，不需要结构，直接发泄。
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        啦啦啦<span class="text-white/90 font-semibold">啦啦啦</span>。
-                    </p>
-
-                    <!-- AI Tools -->
-                    <div class="pt-6">
-                        <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-4 font-bold">我用过的 AI 工具</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="tool-tag">Claude</span>
-                            <span class="tool-tag">Kling AI</span>
-                            <span class="tool-tag">Nano Banana</span>
-                            <span class="tool-tag">Character AI</span>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
+                            ChatGPT <span class="font-mono text-[9px] text-neonpurple bg-neonpurple/10 px-2 py-0.5 rounded">LONG-TERM PAID</span>
+                        </div>
+                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
+                            Claude
+                        </div>
+                        <div class="border border-white/10 px-4 py-2 rounded-full font-sans text-sm font-bold flex items-center gap-2 bg-white/5">
+                            Gemini <span class="font-mono text-[9px] text-neonpurple bg-neonpurple/10 px-2 py-0.5 rounded">LONG-TERM PAID</span>
                         </div>
                     </div>
+                </div>
+                <p class="font-mono text-xs text-white/30 mt-8">Primary interfaces for reasoning, narrative structuring, and logic validation.</p>
+            </div>
 
-                    <!-- Projects -->
-                    <div class="pt-6 space-y-3">
-                        <p class="font-mono text-xs tracking-widest text-white/25 uppercase mb-4 font-bold">相关项目</p>
-                        <div class="glass-panel p-5">
-                            <p class="font-mono text-[10px] tracking-widest text-white/30 mb-2 font-bold uppercase">Vibe Coded Tool</p>
-                            <p class="font-sans text-sm text-white/75 font-medium">情绪焚烧炉 — 粒子动画 + Claude API 驱动的情绪释放工具</p>
+            <!-- 探索与未来 (Next Frontier) -->
+            <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold mb-6">
+                        Exploring / 准备探索
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div class="text-lg font-sans font-bold text-white/80">Kimi</div>
+                        <div class="text-lg font-sans font-bold text-white/80">Codex</div>
+                    </div>
+                </div>
+                <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mt-8"></div>
+            </div>
+
+            <!-- 工作效能 (Work & Productivity) -->
+            <div class="glass-card p-8 rounded-2xl md:col-span-1">
+                <div class="font-mono text-[10px] tracking-widest text-neonblue uppercase font-bold mb-6">
+                    Workspace / 工作台应用
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-mono text-[9px] text-white/40 mb-2">INFORMATION SEARCH</p>
+                        <div class="flex gap-2">
+                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">元宝</span>
+                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">DeepSeek</span>
                         </div>
-                        <div class="glass-panel p-5">
-                            <p class="font-mono text-[10px] tracking-widest text-white/30 mb-2 font-bold uppercase">AI Short Film</p>
-                            <p class="font-sans text-sm text-white/75 font-medium">《熵 / ENTROPY》— AI sci-fi 短片脚本，使用 Kling AI 完成视觉生成</p>
+                    </div>
+                    <div>
+                        <p class="font-mono text-[9px] text-white/40 mb-2">COPYWRITING</p>
+                        <div class="flex gap-2">
+                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">千问</span>
+                            <span class="text-sm font-bold bg-white/5 px-3 py-1 rounded border border-white/10">豆包</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- 04 / Still Thinking -->
-        <section class="px-6 md:px-10 py-20 border-t border-white/[0.07]" data-reveal>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[180px_1fr] gap-10 md:gap-16">
-                <div>
-                    <p class="font-mono text-xs tracking-widest text-white/25 uppercase font-bold md:sticky md:top-32">04 / Still Thinking</p>
+            <!-- 视觉与视频流 (Visual & Video Generation) -->
+            <div class="glass-card p-8 rounded-2xl md:col-span-2">
+                <div class="font-mono text-[10px] tracking-widest text-white/60 uppercase font-bold mb-6">
+                    Visual & Video / 视觉与影像生成
                 </div>
-                <div class="space-y-5">
-                    <h2 class="font-sans text-2xl md:text-3xl font-medium text-white/90 mb-6">还在想</h2>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        啦啦啦
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        啦啦啦
-                    </p>
-                    <p class="font-sans text-sm md:text-base text-white/60 leading-[1.9]">
-                        啦啦啦
-                    </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold">可灵 (Kling)</span>
+                            <span class="font-mono text-[9px] text-neonpurple border border-neonpurple/30 px-1.5 rounded">PAID</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-white/70">即梦 (Jimeng)</span>
+                            <span class="font-mono text-[9px] text-white/30 border border-white/10 px-1.5 rounded">TRIAL</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-white/70">Happy Hourse</span>
+                            <span class="font-mono text-[9px] text-white/30 border border-white/10 px-1.5 rounded">TRIAL</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 border-l border-white/5 pl-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-white/80">Midjourney</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-white/80">Runway</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-white/80">Luma</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
+            <!-- 工作流与代码 (Workflow) -->
+            <div class="glass-card p-6 rounded-2xl md:col-span-3 flex justify-between items-center">
+                <div class="flex items-center gap-8">
+                    <div class="font-mono text-[10px] tracking-widest text-white/40 uppercase font-bold">
+                        Systems & Workflows
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-sm font-bold text-white/80 tracking-wide">Google Flow</span>
+                        <span class="text-white/20">/</span>
+                        <span class="text-sm font-bold text-white/80 tracking-wide">GitHub</span>
+                    </div>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-white/20"></div>
+            </div>
+
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="px-6 md:px-10 py-10 border-t border-white/[0.07] relative z-10">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <a href="index.html" class="font-mono text-xs tracking-widest text-white/25 hover:text-white/60 transition-colors uppercase font-bold flex items-center gap-2">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                Back to Resume
-            </a>
-            <div class="font-mono text-xs text-white/25 font-bold">
-                &copy; 2026 MORGAN TENG. ALL RIGHTS RESERVED.
-            </div>
-        </div>
-    </footer>
-
     <script>
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.dataset.reveal = 'visible';
-                    revealObserver.unobserve(entry.target);
-                }
+        // GSAP 进场动画
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.to("[data-reveal]", {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out"
             });
-        }, { rootMargin: '-50px' });
-        
-        document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+        });
     </script>
 </body>
 </html>
