@@ -27,21 +27,6 @@
     </script>
 
     <style>
-        /* 视频背景全屏铺满 */
-        #video-bg video {
-            position: absolute; 
-            top: 50%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%; 
-            min-height: 100%;
-            object-fit: cover;
-        }
-
-        /* 强行屏蔽 Safari 播放控件 */
-        video::-webkit-media-controls { display: none !important; }
-        video::-webkit-media-controls-enclosure { display: none !important; }
-
         .glass-panel {
             background: rgba(10, 10, 10, 0.4);
             backdrop-filter: blur(12px);
@@ -66,11 +51,9 @@
 </head>
 <body class="bg-obsidian text-white/90 antialiased selection:bg-white/20">
 
-    <div id="video-bg" class="fixed inset-0 z-0 bg-obsidian pointer-events-none">
+    <div class="fixed inset-0 z-0 bg-obsidian pointer-events-none">
         <div class="absolute inset-0 bg-black/70 z-10 pointer-events-none"></div>
-        <video id="about-video" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture class="z-0 w-full h-full object-cover pointer-events-none">
-            <source src="aboutbg.mp4" type="video/mp4" />
-        </video>
+        <img src="aboutbg.jpeg" alt="Neural Network Background" class="absolute inset-0 z-0 w-full h-full object-cover pointer-events-none" />
     </div>
 
     <div class="relative z-10 pointer-events-none">
@@ -228,36 +211,6 @@
     </div>
 
     <script>
-        // 核心解冻函数
-        function forcePlayVideo() {
-            const bgVideo = document.getElementById('about-video');
-            if (bgVideo && bgVideo.paused) {
-                bgVideo.play().catch(e => console.log("等待交互解锁..."));
-            }
-        }
-
-        // 1. 页面初次加载时尝试播放
-        document.addEventListener("DOMContentLoaded", forcePlayVideo);
-
-        // 2. 专门解决 Safari 返回页面时 (BFCache) 视频冻结的问题
-        window.addEventListener('pageshow', forcePlayVideo);
-
-        // 3. 交互解锁大法：只要用户滑动、点击、或移动鼠标，立刻强行解冻视频！
-        const unlockVideo = () => {
-            forcePlayVideo();
-            // 触发一次后即可移除监听，节省性能
-            window.removeEventListener('scroll', unlockVideo);
-            window.removeEventListener('mousemove', unlockVideo);
-            window.removeEventListener('touchstart', unlockVideo);
-            window.removeEventListener('click', unlockVideo);
-        };
-
-        window.addEventListener('scroll', unlockVideo, { passive: true });
-        window.addEventListener('mousemove', unlockVideo, { passive: true });
-        window.addEventListener('touchstart', unlockVideo, { passive: true });
-        window.addEventListener('click', unlockVideo, { passive: true });
-
-        // 监听进入视野动画
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
